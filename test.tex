@@ -1,6 +1,7 @@
-\documentclass{article}
 
-\title{Xyz}
+\documentclass{article}
+\usepackage{multirow}
+\title{Augmented NLP deep models for sentiment analysis  (or)  The effectiveness of text augmentation in sentiment analysis using deep learning}
 
 
 \begin{document}
@@ -8,21 +9,90 @@
 \maketitle
 
 \begin{abstract}
-dfsd
+This paper explores and campare multiple solutions to the problem of data augmentation in sentiment analysis.
+This paper investigates two approaches to textual data augmentation for sentiment classification, offline and the other is online data modification. 
+Offline means changing the data before the training is started and online data modification is using transformed samples during the training process. 
+We are planning to find the best strategy for augmentation in terms of training time, accuracy, loss. 
+We use 2 neural network architectures, 3 data augmentation methods, and test them on 2 different datasets. 
+Our experiments indicate that the approach one improves the results ….
+
+
+Keywords :  Data Augmentation, sentiment analysis, Back translation,
+
+
 \end{abstract}
 
+ 
+
 \section{Introduction}
+
+Data Augmentation is ubiquitous in Vision, but very rare and disorganized in NLP. why?
+
+Data augmentation helps to boost the performance of the model as it can be achieved through more data.
+Image data augmentation is a standard practice in Computer Vision tasks, whereas Text data augmentation is rare in NLP tasks, due to the challenges it involves.
+Rotation, flipping, contrast setting are not changing the semantics of the Image. An image of a bird is still an image of bird after applying augmentations.
+
+Challenges with text augmentation..
+1.
+2.
+3. 
+
 The gist of this paper is to discuss various augmentation approaches and study their effect in sentiment analysis by following two approaches.
 
-Approach 1 - augmenting the dataset before training a classifier
+Approach 1 - augmenting the dataset before training a classifier - increase in training data
 
-Approach 2 - Augmenting the dataset while training a model.
+Approach 2 - Augmenting the dataset while training a model. - aug on batches
 
 We compare these approaches to DA on two different datasets.
+\section{Related Work}
+Discussion on Augmentation strategies.
+
+Data Augmentation in NLP is severly under-searched. When comes to Text Augmentation, researchers have many questions like Is it better to augment with language models? embeddings? or a thesarusus? How many words from the source text should be replaced? and How many data points need to be added to the training set?
+
+Eventhough less work happened so far in text augementation, different authors leveraged augmentation to tickle NLP tasks via generating more text data to boost up the models.
+some of them are 
+
+
+
+
+NLP Data Augmentation Techniques - https://amitness.com/2020/05/data-augmentation-for-nlp/
+1. Lexical Substitution - tries to substitute words present in a text without changing the meaning of the sentence.
+1. Thesaurus-based substitution
+2. word-embeddings substitution
+3. masked language model
+4. TF-IDF based word replacement
+
+2. Back translation
+
+3.Text Surface Transformation
+
+4. Random Noise Injection
+1. spelling error injection
+2. qwerty keyboard error injection
+3. unigram noising
+4. blank noising
+5, sentence shuffling
+6. random insertion
+7/ random swap
+8. random deletion
+
+
+5. Instance crossover augmentatio
+
+6. syntax tree manipulation
+7. mixup for text
+a. word mix up
+b. sent mix up
 
 \section{Model Descriptions}
+Mathematical models of LSTM, GRU, RNN
 \subsection{Problem Setting}
 \subsection{Overview of the model}
+All the above models are optimized using Back Propagation Through Time (BPTT)[?] to minimize the following objective function.
+\begin{equation}
+a + b = b +a
+\end{equation}
+where.... is the ground truth
 \subsection{Data Preprocessing}
 Spacy Tokenization \cite{srinivasa2018natural}
 \subsection{Encoding Layer}
@@ -39,10 +109,26 @@ epochs
 Learning rate 
 length of the sentences
 \subsection{Dataset - Statistics}
+Sample REcords
+
+EDA - number of examples, frequency distribution for length
 \subsection{Implementation Details}
 \subsection{Model Comparison}
 
-
+\section{Results}
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[]
+\begin{tabular}{cllll}
+\multicolumn{1}{l}{}                  &           & RNN & LSTM & GRU \\
+\multirow{2}{*}{Approach-1}           & Dataset 1 &     &      &     \\
+                                      & Dataset 2 &     &      &     \\
+\multirow{2}{*}{Approach-1}           & Dataset 1 &     &      &     \\
+                                      & Dataset 2 &     &      &     \\
+\multirow{2}{*}{Without Augmentation} & Dataset 1 &     &      &     \\
+                                      & Dataset 2 &     &      &    
+\end{tabular}
+\end{table}
 
 body
 
