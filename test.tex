@@ -1,10 +1,13 @@
 
 \documentclass{article}
 \usepackage{multirow}
+\usepackage{subcaption}
+\usepackage[labelformat=parens,labelsep=quad,skip=3pt]{caption}
 \usepackage{graphicx}
-\usepackage{listings}
+\usepackage{textcomp}
+\usepackage[ruled,vlined]{algorithm2e}
 
-\title{Augmented NLP deep models for sentiment analysis  (or)  The effectiveness of text augmentation in sentiment analysis using deep learning (or) Effectiveness of Text Data Augmentation on Classification Tasks}
+\title{Effective Text Augmentation strategy for NLP Models}
 
 
 \begin{document}
@@ -12,16 +15,9 @@
 \maketitle
 
 \begin{abstract}
-Picking simple and powerful data augmentation for text classification task
-This paper explores and campare multiple solutions to the problem of data augmentation in sentiment analysis.
-This paper investigates two approaches to textual data augmentation for sentiment classification, offline and the other is online data modification. 
-Offline means changing the data before the training is started and online data modification is using transformed samples during the training process. 
-We are planning to find the best strategy for augmentation in terms of training time, accuracy, loss. 
-We use 2 neural network architectures, 3 data augmentation methods, and test them on 2 different datasets. 
-Our experiments indicate that the approach one improves the results ….
 
 
-Keywords :  Data Augmentation, sentiment analysis, Back translation,
+Keywords :  Data Augmentation, sentiment analysis, Back translation, Random Swap, Random Deletion, Synonym Replacement.
 
 
 \end{abstract}
@@ -29,84 +25,17 @@ Keywords :  Data Augmentation, sentiment analysis, Back translation,
  
 
 \section{Introduction}
-
-Data Augmentation is ubiquitous in Vision, but very rare and disorganized in NLP. why?
-
-Data augmentation helps to boost the performance of the model as it can be achieved through more data.
-Image data augmentation is a standard practice in Computer Vision tasks, whereas Text data augmentation is rare in NLP tasks, due to the challenges it involves.
-Rotation, flipping, contrast setting are not changing the semantics of the Image. An image of a bird is still an image of bird after applying augmentations.
-
-Challenges with text augmentation..
-1.
-2.
-3. 
-
-The gist of this paper is to discuss various augmentation approaches and study their effect in sentiment analysis by following two approaches.
-
-Approach 1 - augmenting the dataset before training a classifier - increase in training data
-
-Approach 2 - Augmenting the dataset while training a model. - aug on batches
-
-We compare these approaches to DA on two different datasets.
-
-By and large, our main contributions are
-1. we make an initial attempt to understand the essence of DA in SA by investigating its benefits which are relatively consistent across five DA methods and two sentiment analysis task.
-2. We highlight two perspectives towards generalization to measure the benefits of DA in SA and study them with carefully designed fair experiments.
-
 \section{Related Work}
-Previous work has proposed some Text Augmentation techniques for NLP tasks ranging from Text classification to Topic classification.
-yu et al 2018 paper
-Xie et al., 2017 paper
-kobayashi, 2018
-In this paper, we evaluate four text augmentation techniques on a dataset by following two approaches i.e., increase in training data size before model training(offline), and other is augmenting data on batches while training(online). Based on the evaluation of these four techniques in two approaches, we propose a method to augment both offline and online which puts less computational burden as well as increases the accuracy.
+\section{Our Approach}
+\subsection{Augmentation Techniques adopted}
 
-
-Discussion on Augmentation strategies.
-
-Data Augmentation in NLP is severly under-searched. When comes to Text Augmentation, researchers have many questions like Is it better to augment with language models? embeddings? or a thesarusus? How many words from the source text should be replaced? and How many data points need to be added to the training set?
-
-Eventhough less work happened so far in text augementation, different authors leveraged augmentation to tickle NLP tasks via generating more text data to boost up the models.
-some of them are 
-
-
-
-
-NLP Data Augmentation Techniques - https://amitness.com/2020/05/data-augmentation-for-nlp/
-1. Lexical Substitution - tries to substitute words present in a text without changing the meaning of the sentence.
-1. Thesaurus-based substitution
-2. word-embeddings substitution
-3. masked language model
-4. TF-IDF based word replacement
-
-2. Back translation
-
-3.Text Surface Transformation
-
-4. Random Noise Injection
-1. spelling error injection
-2. qwerty keyboard error injection
-3. unigram noising
-4. blank noising
-5, sentence shuffling
-6. random insertion
-7/ random swap
-8. random deletion
-
-
-5. Instance crossover augmentatio
-
-6. syntax tree manipulation
-7. mixup for text
-a. word mix up
-b. sent mix up
-
-\section{Data Augmentation techniques adopted}
-\subsection{Random Swap}
+\subsubsection{Random Swap (RS)}
 This approach randomly selects two words and swaps them in a training example, $x$ for $n$ number of times to generate an augmented example, $\hat{x}$. Fig. \ref{fig:randomswap} illustrates this process with an example. 
 \begin{equation}
 \hat{x} = RandomSwap(x, n)
 \end{equation}
-This is a very simple approach to generate new training examples from the existing. Downside of this approach is it may cause adversarial text attack to fool the model especially if the sentence has nouns. For example "Rama Killed Ravana" is completely different from "Ravana killed Rama". This technique can adopted based on the nature of the training examples.
+This is a very simple approach to generate new training examples from the existing. Downside of this approach is it may cause adversarial text attack to fool the model especially if the sentence has nouns. For example "Rama Killed Ravana" is completely different from "Ravana killed Rama". This technique can be adopted based on the nature of the training examples.
+
 \begin{figure}[h!]
 \centering
   \includegraphics[width=0.6\textwidth]{randomswap.jpg}
@@ -114,7 +43,7 @@ This is a very simple approach to generate new training examples from the existi
   \label{fig:randomswap}
 \end{figure}
 
-\subsection{Random Deletion}
+\subsubsection{Random Deletion (RD)}
 This approach randomly deletes $n$ number of words from the training example, $x$ with a probability $p$ and generates an augmented training example $\hat{x}$. A sample example is shown in Fig. \ref{fig:randomdelete}. If the value of $p$ is large, then it may result in meaningless sentences and sometimes the context may change completely.
 \begin{equation}
 \hat{x} = RandomDeletion(x, p)
@@ -126,8 +55,7 @@ This approach randomly deletes $n$ number of words from the training example, $x
   \label{fig:randomdelete}
 \end{figure}
 
-
-\subsection{Back translate}
+\subsubsection{Back Translate (BT)}
 This approach translates a training example, $x$ from source language($SL$) to some intermediate language ($IL$), and again backtranslates it to source language. This technique generates synthetic data in four lines of code, but this is computationally expensive as it has to do language translation twice back to back. Fig. \ref{fig:backtranslate} shows two examples in which German and French are chosen as intermediate languages for translation.
 \begin{equation}
 \hat{x} = translate( translate(x, SL, IL), IL, SL)
@@ -139,9 +67,12 @@ This approach translates a training example, $x$ from source language($SL$) to s
   \label{fig:backtranslate}
 \end{figure}
 
+\subsubsection{Random Synonym Insertion (RSI)}
+This approach randomly inserts synonyms of of $n$ words, which are not stopwords in a training example, $x$ to generate a new training example. An example for Random Insertion with Synonym is shown in Fig. \ref{fig:randominsert}. The outcome of this method depends on the value of $n$. The suggestable value for $n$ can be in the range of 1 to 3. 
+\begin{equation}
+\hat{x} = RandomInsertion(x, n)
+\end{equation}
 
-\subsection{Random Insertion}
-This approach randomly inserts synonyms of existing non stop words into the sentence for 'n' number of times as shown in Fig. \ref{fig:randominsert}. The outcome varries based on the value of 'n' also, values of n in the range of 1 to 3 are suggestible. 
 \begin{figure}[h!]
 \centering
   \includegraphics[width=0.6\textwidth]{random insertion.jpg}
@@ -149,90 +80,204 @@ This approach randomly inserts synonyms of existing non stop words into the sent
   \label{fig:randominsert}
 \end{figure}
 
-Random Insertion technique with synonym replacement can generate a new training example but it sufferes with a deficiency. This may cause adversarial text attack as shown below.
-\begin{lstlisting}
-input x --> "True Grit" was the best movie 
-            I have seen since I was a small boy.  
-            (Predicted as positive)
+Random Insertion technique with synonym replacement can generate a new training example but it suffers with a deficiency. This may cause adversarial text attack as shown below.
 
-Random Insertion(x, n = 2 ) --> "True Grit" was the best movie 
-                                I have seen since I was a wee lad. 
-                                {predicted as negative}
-			
-\end{lstlisting}
+\textbf{input x} \textrightarrow \textit{"True Grit" was the best movie I have seen since I was a small boy.} (Predicted as positive)
 
-\section{Experimental Setup}
-We choose two approaches, one benchmark text classification task and one network architecture to come up with proposed augmentation policy.
-\subsection{Approaches}
+\textbf{Random Insertion(x, n = 2 ) = Augmented $\hat{x}$} \textrightarrow \textit{"True Grit" was the best movie I have seen since I was a \textbf{wee lad}}. {predicted as negative}
 
-\subsection{Dataset}
 
-\section{DA methods in SA}
-\subsection{Training Objective Decomposition}
-\section{Model Descriptions}
-Mathematical models of LSTM, GRU, RNN
+\subsection{The Classification Model}	
+
+A text classification problem can be defined as a set of training examples $D = { x_1, x_2, . . ., x_N}$ in which every record is labelled with a class value drawn from a set of discrete class labels indexed by ${1..k}$\cite{aggarwal2012survey}. The classification model is constructed based on the training examples, and evaluated with the test set. Our paper used RNN language model based on Long Short Term Memory Network (LSTM) \cite{can2018multilingual}. LSTM is better in analyzing emotion of long sentences and it is applied to achieve multi-classification for text emotional attributes \cite{li2016text}. This model is applied on  the Apple Twitter Sentiment Dataset\footnote{https://www.kaggle.com/c/apple-computers-twitter-sentiment2} to study the effectiveness of the selected text augmentation techniques in both the approaches and to come up with a best strategy for augmentation.
+
+The LSTM-RNN takes in a training example as a sequence of words, $X = {x_1, x_2, .., x_T}$ one a time and produces cell state, $c$, and hidden state, $h$, for each word. The network is used recurrently by feeding the current word $x_t$, and cell state and hidden state from the previous word $(c_{t-1}, h_{t-1})$, to produce the next cell and hidden states, $(c_t, h_t)$. The final hidden state, $h_T$ obtained by sending last word in the sentence, $x_T$ to the LSTM cell is fed through a linear layer $f$ to get the predicted sentiment $/hat{y}$.
 \begin{equation}
-h_t = RNN(e(x_t), h_{t-1}) 
+(c_t, h_t) = LSTM (x_t, h_{t-1}, c_{t-1}) 
 \end{equation}
 \begin{equation}
-h_t, c_t = LSTM(e(x_t), h_{t-1}, c_{t-1})
+\hat{y} = f(h_T)
+\end{equation}
+
+\subsection{Evaluation of Augmentation Methods}
+The simple LSTM classification model is trained without applying any augmentation on the original data and received a baseline accuracy of $72.75$. Each of the four augmentation strategies (RS, RD, BT, RSI) were evaluated on the Apple Twitter Sentiment Dataset individually by following two approaches to understand how they are performing. 
+
+\begin{figure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{approach1.jpg}
+    \caption{Pre-Augmentation}
+  \end{subfigure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{approach2.jpg}
+    \caption{Post-Augmentation}
+  \end{subfigure}
+  \caption{Initial methods to test all text augmentation strategies}
+  \label{fig:initialmethods}
+\end{figure}
+
+
+In the first approach the train set is increased by taking a fraction of the training examples, transforming using one of the augmentation technique from RS, RD, BT, and RSI (\ref{fig:initialmethods}). Let $D_t : \{(x_i, y_i)\}_{i=1}^M$ is a set of $M$ training examples.
+\begin{equation}
+D_{Nt} = D_t + T_t
 \end{equation}
 \begin{equation}
-h_t = GRU(e(x_t), h_{t-1})
+T_t = T(\{(x_i, y_i)\}_{i=1}^{f.M})
 \end{equation}
-Encoder takes a sequence $X = {x_1, x_2, . . ., x_T}$ passes it to the embedding layer, recurrently calculates Hidden states, $H = {h_1, h_2, . . ., h_T}$ and returns a context vector (the final hidden state), $z = h_T$.
-\begin{equation}
-h_t = EncoderGRU(e(x_t), h_{t-1})
-\end{equation}
-\subsection{Problem Setting}
-\subsection{Overview of the model}
-All the above models are optimized using Back Propagation Through Time (BPTT)[?] to minimize the following objective function.
-\begin{equation}
-a + b = b +a
-\end{equation}
-where.... is the ground truth
-\subsection{Data Preprocessing}
-Spacy Tokenization \cite{srinivasa2018natural}
-\subsection{Encoding Layer}
+Where, $T$ is a transformation function, which augments a fraction, $f$ of the $M$ training samples to form new Training set, $D_{Nt}$. The new training set will $(1+f).M$ records after augmentation. This approach is followed for all the adopted augmentation techniques and all the methods improved the validation accuracy by 2 to 3\% when compared with baseline. Fig. \ref{fig:initialmethods} depicts the training accuracy vs. validation accuracy for all these four experiments and it is very clear that Back translation consistently maintained good validation accuracy when compared with baseline accuracy.
 
-\section{Experiments}
-\subsection{Experiment Settings}
-Introduce parameter settings here
-word embedding is 300D pretrained
-adam
-dropout for bilstm
-dropout for wordembeddings
-layers
-epochs
-Learning rate 
-length of the sentences
-\subsection{Dataset - Statistics}
-Sample REcords
 
-EDA - number of examples, frequency distribution for length  - follow this https://neptune.ai/blog/exploratory-data-analysis-natural-language-processing-tools
-\subsection{Implementation Details}
-\subsection{Model Comparison}
 
-\section{Results}
-% Please add the following required packages to your document preamble:
-% \usepackage{multirow}
+In the second approach the training samples $D_t : \{(x_i, y_i)\}_{i=1}^M$ in a mini-batch set at $t^th$ training iteration can be changed to $\hat{D_t} : \{(\hat{x_i}, y_i)\}_{i=1}^M$ by applying the augmentation techniques when they are fed into the LSTM network (Fig. \ref{fig:approach2}). This process repeats for every batch of every epoch of the training process. In this approach, the model encounters plenty of augmented training examples. 
+Let $e$ be the number of epochs, and $b$ be the number of batches and $m$ the number of training samples in every batch, and augmentation happens randomly for 50\% of the training samples, then the overall augmented training samples seen by the model in the training phase are $e * b * (05.m)$.
+
+The augmentation techniques adopted to test this approach are RS and RD only. The reason for not adopting BT, RSI is they can work in sentence level, but not on token level, and in training the sentence is available in numerical format only. Fig. \ref{fig:postaugmentA2} depicts the training accuracy vs. validation accuracy for these two experiments. Both the methods helped improve validation accuracy, and Random Deletion also reduced overfitting.
+
+
+By examining the performance of the text augmentation techniques adopted in the above two approaches, we have come up with a mixed augmentation startegy, in which a fraction of the original training data is transformed by using RS, RD, BT, RSI by following a randomized algorithm called \textit{preAugment(x)} and again randomly applying transformation on batches by using RS and RD by following \textit{postAugment(x)} algorithm. In this approach, Fig. \ref{fig:proposedapproach}, there is a chance to apply augmentation on the augmented text i.e, Random Swap operation may happen on the back translated text.
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=0.8\textwidth]{proposedmethod.jpg}
+  \caption{proposed method... write some text here}
+  \label{fig:proposedapproach}
+\end{figure}
+
+\begin{algorithm}[H]
+\SetAlgoLined
+\KwResult{Transformed Exampmle $\hat{x}$ for the Training Example $x$}
+rate := getRandom(0,1) \tcp*{returns a number between 0 and 1}
+\eIf{ rate $<$ 0.3}{
+$\hat{x} = RandomInsertion(x, n)$ \;
+}{
+\eIf{rate $<$ 0.6} {
+$\hat{x} = translate( translate(x, SL, IL), IL, SL)$ \;
+}
+{
+\eIf{rate $<$ 0.8}{
+$\hat{x} = RandomDeletion(x, p)$ \;}
+{
+$\hat{x} = RandomSwap(x, n)$ \;}
+}
+}
+\caption{Pre-Augmentation($x$)}
+\end{algorithm}
+
+
+\begin{algorithm}[H]
+\SetAlgoLined
+\KwResult{Transformed Exampmle $\hat{x}$ for the Training Example $x$}
+rate := getRandom(0,1)    \tcp*{returns a number between 0 and 1}
+\eIf{ rate $<$ 0.2}{
+$\hat{x} = RandomSwap(x, n)$  \;
+}{
+\eIf{rate $<$ 0.6} {
+$\hat{x} = RandomDeletion(x, p)$ \;
+}
+{
+$\hat{x} = x$
+}
+}
+\caption{Post-Augmentation($x$)}
+\end{algorithm}
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Experiment}
+\begin{figure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{accuracyrandomswapA1.jpg}
+    \caption{Random Swap}
+  \end{subfigure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{accuracyrandomdeleteA1.jpg}
+    \caption{Random Deletion}
+  \end{subfigure}
+ 
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{accuracybacktranslate.jpg}
+    \caption{Back translation}
+  \end{subfigure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{accuracyrandomInsertionA1.jpg}
+    \caption{Random Synonym Insertion}
+  \end{subfigure}
+  \caption{Approach 1 with RS, RD, BT, RSI}
+  \label{fig:preaugmentA1}
+\end{figure}
+
+
+\begin{figure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{accuracyrandomswapA2.jpg}
+    \caption{Random Swap}
+  \end{subfigure}
+  \begin{subfigure}{6cm}
+    \centering\includegraphics[width=5cm]{accuracyrandomdeleteA2.jpg}
+    \caption{Random Deletion}
+  \end{subfigure}
+  \caption{Approach 2 with RS, RD}
+  \label{fig:postaugmentA2}
+\end{figure}
+
+
+\subsection{Data}
+For our experiment, we use the Apple Twitter Sentiment dataset provided by kaggle for a competition called inclass prediction. This dataset is suitable for the experiment as we need to test augmentation strategy in limited data settings. ATS contains 3886 records in which 82 are not relevant. The tweets can be either positive, negative or neutral. The original training records we adopted for experimentation with class labels were provided in the bar chart at Fig.\ref{dataset}. 80\% of the data is taken as training data and the rest as validation data to perform the experiment. \textit{\\@ mentions, \#hashtag, RT (Retweet), hyperlinks} were removed as part of preprocessing the data, as the adopted data is from twitter.
+
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=0.8\textwidth]{dataset.png}
+  \caption{training examples class wise}
+  \label{fig:dataset}
+\end{figure}
+
+\subsection{Experimental Setup}
+The Data was tokenized with the help of \textit{spacy}\cite{srinivasa2018natural} tokenizer. \textit{TorchText}\footnote{https://pytorch.org/text/stable/index.html} library is utilized to complete the work. This library is part of PyTorch project, which contains data processing utilities and popular datasets for Natural Language Processing. 
+
+A simple classification model based on LSTM is adopted and same hyper-parameters are used for all the /textbf{8} experimentations, baseline without augmentations(1), preaugmentation approach (Fig. \ref{fig:initialmethods}) for RS, RD, BT, RSI techniques (4), postaugmentation on batches (Fig. \ref{fig:initialmethods}) approach for RS, RD techniques(2) and for the proposed approach (Fig.\ref{fig:proposedapproach})(1). The dimension of word embeddings is 300 and the number of hidden units is 100. Dropout rate is 0.25 and the batch size is 32. Adam optimizer is used with an inital learning rate of 0.001. All training consists of 100 epochs. We report accuracy of all the experiments.
+
+\subsection{Results and Analysis}
+The resultant accuracies obtained by applying the a single augmentation strategy from the set of RS, RD, BT, RSI in the approaches mentioned above are present in Table 1. RS and RSI have performed well if training data is increased before training, RD reduced the overfitting if the data is augmented while training on batches. Based on these observations Algorithm1 preaument, which randomly chooses one of the four techniques is used to increase the training data before training and Algorithm 2 post augment, which randomly chooses either RS or RD while training were adopted as shown in Fig. \ref{fig:proposedapproach}. This approach has resulted with 76.05\%, which is an increase of +3.29, when compared with the baseline. The proposed approach outperformed all the simple approaches to augment the data for performance boosting. 
+
 \begin{table}[]
-\begin{tabular}{cllll}
-\multicolumn{1}{l}{}                  &           & RNN & LSTM & GRU \\
-\multirow{2}{*}{Approach-1}           & Dataset 1 &     &      &     \\
-                                      & Dataset 2 &     &      &     \\
-\multirow{2}{*}{Approach-1}           & Dataset 1 &     &      &     \\
-                                      & Dataset 2 &     &      &     \\
-\multirow{2}{*}{Without Augmentation} & Dataset 1 &     &      &     \\
-                                      & Dataset 2 &     &      &    
+\begin{tabular}{|c|l|l|l|l|}
+\hline
+\textbf{\begin{tabular}[c]{@{}c@{}}Augmentation\\ Strategy\end{tabular}} & \multicolumn{2}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Approach - 1\\ pre-augmentation\end{tabular}}} & \multicolumn{2}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Approach - 2\\ post-augmentation\end{tabular}}} \\ \hline
+\textbf{RS}                                                              & 75.45                                             & + 2.7                                             & 74.74                                             & + 1.99                                             \\ \hline
+\textbf{RD}                                                              & 75.15                                             & + 2.4                                             & 74.41                                             & + 1.66                                             \\ \hline
+\textbf{BT}                                                              & 74.74                                             & + 1.99                                            &                                                   &                                                    \\ \hline
+\textbf{RSI}                                                             & 75.51                                             & + 2.76                                            &                                                   &                                                    \\ \hline
 \end{tabular}
+\caption{Comparison of adopted augmentation techniques with a baseline accuracy of 72.75\%}
 \end{table}
 
-body
-
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=0.8\textwidth]{accuracyproposed.jpg}
+  \caption{accuracy proposed}
+  \label{fig:accuracyproposed}
+\end{figure}
+\section{Conclusion}
+In this paper, we proposed a new data augmentation policy to increase the data before training and while training. The proposed approach best suits when the data is limited.
+\section{Future Work}
 \begin{thebibliography}{10}
 
-\bibitem{srinivasa2018natural} Srinivasa-Desikan, Bhargav. Natural Language Processing and Computational Linguistics: A practical guide to text analysis with Python, Gensim, spaCy, and Keras. Packt Publishing Ltd, 2018.
 
+\bibitem{aggarwal2012survey} Aggarwal, Charu C., and ChengXiang Zhai. "A survey of text classification algorithms." Mining text data. Springer, Boston, MA, 2012. 163-222.
+
+\bibitem{can2018multilingual} Can, Ethem F., Aysu Ezen-Can, and Fazli Can. "Multilingual sentiment analysis: An RNN-based framework for limited data." arXiv preprint arXiv:1806.04511 (2018).
+
+\bibitem{li2016text} Li, Dan, and Jiang Qian. "Text sentiment analysis based on long short-term memory." 2016 First IEEE International Conference on Computer Communication and the Internet (ICCCI). IEEE, 2016.
+
+\bibitem{srinivasa2018natural} Srinivasa-Desikan, Bhargav. Natural Language Processing and Computational Linguistics: A practical guide to text analysis with Python, Gensim, spaCy, and Keras. Packt Publishing Ltd, 2018.
 \end{thebibliography}
 \end{document}
