@@ -1,4 +1,3 @@
-
 \documentclass{article}
 \usepackage{multirow}
 \usepackage{subcaption}
@@ -25,7 +24,21 @@ Keywords :  Data Augmentation, sentiment analysis, Back translation, Random Swap
  
 
 \section{Introduction}
+Nowadays, highly advanced applications in the filed of Natural Language Processing (NLP) are ubiquitous and it involves the computational processing and understanding of human languages. Incredible progress has taken place, particularly in the last few years in deep learning based NLP. The field of NLP is relied on statistics, probability, and machine learning since the 1980s, and on deep learning since 2010s\cite{otter2020survey}.  Machine Learning and Deep Learning have obtained significant results on the tasks ranging from Sentiment Analysis \cite{tang2015deep} to Question Answering \cite{malinowski2017ask}. 
+
+Eventhough there are many advantages from deep learning, there are also more common challenges of deep learning\cite{li2017deep} when comes to NLP, lack of theoretical foundation, lack of interpretability of the model, and hte requirement of a large amount of data and powerful computing resources. High performance of any model always depends on the size and quality of the data on which the model gets trained. Data Augmentation (DA) is a technique to increase the training data, it helps to boost the performance of the model. Image data augmentation is a standard practice in Computer Vision tasks and they performed remarkably well on many tasks \cite{perez2017effectiveness}, whereas Text data augmentation is rare in NLP tasks, due to the challenges it involves. The reasons for these challenges is coming up with rules for language transformation is not thoroughly studied and experimented. Some methods have already been proposed to increase the amount of training data using simple text transformations or text generation through language models \cite{abonizio2020pre}. Therefore, text data augmentation for NLP tasks becomes appealing.
+
+In this work, we propose a text data augmentation strategy based on increasing training data before model training and augmenting the data while training the model. For implementing this startegy, we are adopting four text augmentation methods like Random Swap (RS), Random Deletion (RD), Random Synonym Insertion (RSI) and Back translation(BT). The proposed startegy is evaluated on Apple Twitter Sentiment Dataset, a dataset for sentiment classification. The results show that our approach can obtain a significant improvement when the training data is limited.
+
+The rest of the paper is organized as follows.......
+
+
 \section{Related Work}
+Previous work has proposed some text augmentation techniques. A popular study called Back-translation, can generate new data by translating sentences from one languge to another and it is an effective method for NMT to improve translation quality \cite{fadaee2018back}. Synonym identification and replacement \cite{anders2020dynamic} is another study carried out to transform sentences into another with similar meaning. Data noising is another approach studied for augmentation, it is widely adopted in application domains like vision and speech \cite{xie2017data}. Easy data augmentation (EDA)\cite{wei2019eda} proposed four techniques to do transformations in NLP, which includes synonym replacement, random insertion, random swap, and random deletion. EDA has shown significant performace improvement over text classification tasks.
+
+In this paper, we are proposing an approach which augments the data before training and while training on batches. The proposed method follows a combination of RS, RD, BT, and RSI methods to perform text augmentaion. We evaluated the proposed method on a classfication task, and a significant improvement is achieved on a smaller dataset. Code is publicly available here\footnote{https://github.com/sridevibonthu/TextAugmentation}.
+
+
 \section{Our Approach}
 \subsection{Augmentation Techniques adopted}
 
@@ -104,11 +117,11 @@ The simple LSTM classification model is trained without applying any augmentatio
 
 \begin{figure}
   \begin{subfigure}{6cm}
-    \centering\includegraphics[width=5cm]{approach1.jpg}
+    \centering\includegraphics[width=5cm]{approach1.jpeg}
     \caption{Pre-Augmentation}
   \end{subfigure}
   \begin{subfigure}{6cm}
-    \centering\includegraphics[width=5cm]{approach2.jpg}
+    \centering\includegraphics[width=5cm]{approach2.jpeg}
     \caption{Post-Augmentation}
   \end{subfigure}
   \caption{Initial methods to test all text augmentation strategies}
@@ -137,7 +150,7 @@ By examining the performance of the text augmentation techniques adopted in the 
 
 \begin{figure}[h!]
 \centering
-  \includegraphics[width=0.8\textwidth]{proposedmethod.jpg}
+  \includegraphics[width=0.8\textwidth]{proposedmethod.jpeg}
   \caption{proposed method... write some text here}
   \label{fig:proposedapproach}
 \end{figure}
@@ -207,7 +220,7 @@ $\hat{x} = x$
     \caption{Back translation}
   \end{subfigure}
   \begin{subfigure}{6cm}
-    \centering\includegraphics[width=5cm]{accuracyrandomInsertionA1.jpg}
+    \centering\includegraphics[width=5cm]{accuracyrandomInsertionA1.jpeg}
     \caption{Random Synonym Insertion}
   \end{subfigure}
   \caption{Approach 1 with RS, RD, BT, RSI}
@@ -235,7 +248,7 @@ For our experiment, we use the Apple Twitter Sentiment dataset provided by kaggl
 
 \begin{figure}[h!]
 \centering
-  \includegraphics[width=0.8\textwidth]{dataset.png}
+  \includegraphics[width=0.8\textwidth]{dataset.jpeg}
   \caption{training examples class wise}
   \label{fig:dataset}
 \end{figure}
@@ -262,7 +275,7 @@ The resultant accuracies obtained by applying the a single augmentation strategy
 
 \begin{figure}[h!]
 \centering
-  \includegraphics[width=0.8\textwidth]{accuracyproposed.jpg}
+  \includegraphics[width=0.8\textwidth]{accuracyproposed.jpeg}
   \caption{accuracy proposed}
   \label{fig:accuracyproposed}
 \end{figure}
@@ -272,7 +285,33 @@ In this paper, we proposed a new data augmentation policy to increase the data b
 \begin{thebibliography}{10}
 
 
+
+
+\bibitem{abonizio2020pre} Abonizio, Hugo Queiroz, and Sylvio Barbon Junior. "Pre-trained Data Augmentation for Text Classification." Brazilian Conference on Intelligent Systems. Springer, Cham, 2020.
+
+\bibitem{perez2017effectiveness} Perez, Luis, and Jason Wang. "The effectiveness of data augmentation in image classification using deep learning." arXiv preprint arXiv:1712.04621 (2017).
+
+\bibitem{tang2015deep} Tang, Duyu, Bing Qin, and Ting Liu. "Deep learning for sentiment analysis: successful approaches and future challenges." Wiley Interdisciplinary Reviews: Data Mining and Knowledge Discovery 5.6 (2015): 292-303.
+
+\bibitem{malinowski2017ask} Malinowski, Mateusz, Marcus Rohrbach, and Mario Fritz. "Ask your neurons: A deep learning approach to visual question answering." International Journal of Computer Vision 125.1-3 (2017): 110-135.
+
+\bibitem{young2018recent} Young, Tom, et al. "Recent trends in deep learning based natural language processing." ieee Computational intelligenCe magazine 13.3 (2018): 55-75.
+
+\bibitem{li2017deep} Li, Hang. "Deep learning for natural language processing: advantages and challenges." National Science Review (2017).
+
+\bibitem{otter2020survey} Otter, Daniel W., Julian R. Medina, and Jugal K. Kalita. "A survey of the usages of deep learning for natural language processing." IEEE Transactions on Neural Networks and Learning Systems (2020).
+
 \bibitem{aggarwal2012survey} Aggarwal, Charu C., and ChengXiang Zhai. "A survey of text classification algorithms." Mining text data. Springer, Boston, MA, 2012. 163-222.
+
+
+
+\bibitem{fadaee2018back} Fadaee, Marzieh, and Christof Monz. "Back-translation sampling by targeting difficult words in neural machine translation." arXiv preprint arXiv:1808.09006 (2018).
+
+\bibitem{anders2020dynamic} Anders, Kelley L., et al. "Dynamic homophone/synonym identification and replacement for natural language processing." U.S. Patent No. 10,657,327. 19 May 2020.
+
+\bibitem{xie2017data} Xie, Ziang, et al. "Data noising as smoothing in neural network language models." arXiv preprint arXiv:1703.02573 (2017).
+
+\bibitem{wei2019eda} Wei, Jason, and Kai Zou. "Eda: Easy data augmentation techniques for boosting performance on text classification tasks." arXiv preprint arXiv:1901.11196 (2019).
 
 \bibitem{can2018multilingual} Can, Ethem F., Aysu Ezen-Can, and Fazli Can. "Multilingual sentiment analysis: An RNN-based framework for limited data." arXiv preprint arXiv:1806.04511 (2018).
 
