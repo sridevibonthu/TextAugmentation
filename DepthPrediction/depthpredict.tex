@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage[labelformat=parens,labelsep=quad,skip=3pt]{caption}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage[ruled,vlined]{algorithm2e}
+
+\title{A Dense Depth and Forground images dataset of Stray Animals (some name XYZ)}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Depth and foreground prediction
+
+
+\end{abstract}
+
+ 
+
+\section{Introduction}
+
+we introduce XYZ, a dataset that contains millions of depth and forground images of stray animals derived from few hundreds of images. XYZ is the first dataset which has stray animals. The dataset is available for download at ....link...
+This is an RGBDM dataset that pair images with depth and mask. The datasets which involve depth cannot be created using crowd source annotation, instead they rely on 3D range sensors. This XYZ is experimentally created with the help of existing depth predictors and foreground creators.
+
+XYZ can also be used for automonous driving
+
+
+Depth information is integral to many problems in
+robotics, including mapping, localization and obstacle avoidance for terrestrial and aerial vehicles, and in com- puter vision, including augmented and virtual reality\cite{marchand2015pose}.
+The reason for using existing depth predictors for the creation of new dataset - depth sensors and monocular cameras are expensive. we used existing accurate depth predictor [reference]
+
+if we can come up with limitations of existing rgbd datasets... then we can write This paper present the XYZ dataset in an effort to address the aforementioned limitations of exisitng RGBD datasets.
+
+Figure \ref{fig:samplerecord} represents a few representative examples from XYZ
+
+The most important feature of XYZ is 
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=1\textwidth]{samplerecord.png}
+  \caption{Sample Record which contains the background image, a cow overlayed on top of background, its mask and depth images}
+  \label{fig:samplerecord}
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=1\textwidth]{finalepoch.png}
+  \caption{Sample Record which contains the background image, a cow overlayed on top of background, its mask and depth images}
+  \label{fig:samplerecord}
+\end{figure}
+
+
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=1\textwidth]{unseen.jpeg}
+  \caption{Sample Record which contains the background image, a cow overlayed on top of background, its mask and depth images}
+  \label{fig:samplerecord}
+\end{figure}
+
+
+\section {Related Work}
+A variety of RGBD datasets in which images are paired with corresponding depth maps(D) have been proposed through the years.
+Available RGBD datasets
+kitti dataset \cite{geiger2013vision}, the Synthia dataset \cite{ros2016synthia}, Make3D dataset \cite{saxena2008make3d}, NYU dataset \cite{silberman2012indoor}
+
+
+\section{Conclusion}
+\section{Acknowledgement}
+This paper and the research behind it would not have been possible without the exceptional support and computing facilities of my Institution, Vishnu Institute of Technology.
+\begin{thebibliography}{10}
+\bibitem{geiger2013vision} Geiger, Andreas, et al. "Vision meets robotics: The kitti dataset." The International Journal of Robotics Research 32.11 (2013): 1231-1237.
+
+\bibitem{ros2016synthia} Ros, German, et al. "The synthia dataset: A large collection of synthetic images for semantic segmentation of urban scenes." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.
+
+\bibitem{saxena2008make3d} Saxena, Ashutosh, Min Sun, and Andrew Y. Ng. "Make3D: Depth Perception from a Single Still Image." AAAI. Vol. 3. 2008.
+
+\bibitem{silberman2012indoor} Silberman, Nathan, et al. "Indoor segmentation and support inference from rgbd images." European conference on computer vision. Springer, Berlin, Heidelberg, 2012.
+
+\bibitem{marchand2015pose} Marchand, Eric, Hideaki Uchiyama, and Fabien Spindler. "Pose estimation for augmented reality: a hands-on survey." IEEE transactions on visualization and computer graphics 22.12 (2015): 2633-2651.
+
+\end{thebibliography}
+\end{document}
+\section{Conclusion}
+\section{Acknowledgement}
+This paper and the research behind it would not have been possible without the exceptional support and computing facilities of my Institution, Vishnu Institute of Technology.
+\begin{thebibliography}{10}
+
+
+
+\end{thebibliography}
+\end{document}
