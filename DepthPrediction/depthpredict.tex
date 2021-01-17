@@ -14,19 +14,28 @@
 \maketitle
 
 \begin{abstract}
-Dataset creation
+Dataset creation. 
+
+This work experimentally produces a dataset of size 4M records, where each record is a combination of 4 images from a very limited input. The input taken to generate this dataset are 100 background images and 100 foreground images.
+
+How this dataset is unique and differs from the existing ones?  Firstly, It is a dedicated dataset for stray animals. and Secondly, the large
+volume of data recorded: 40,00,000 tuples where each tuple is composed of a RGB image, a depth image, and a mask of the animal. 
 
 limitation lacking ground truth
 
-Depth and foreground prediction
+Depth and foreground prediction.
 
+This paper presents a model to establish the baseline as the start point to develop more recognition algorithms. The XYZ dataset is publicly availble at\footnote{datasetwebsite}.
 
+Keywords : Dataset, Depth image, mask, Depth prediction,
 \end{abstract}
 
  
 
 \section{Introduction}
+What is depth ? - A depth image is an image channel in which each pixel relates to a distance between the image plane and the corresponding object in the RGB image
 
+RGBD image is a combination of a RGB image and its corresponding depth image. 
 we introduce XYZ, a dataset that contains millions of depth and forground images of stray animals derived from few hundreds of images. XYZ is the first dataset which has stray animals. The dataset is available for download at ....link...
 This is an RGBDM dataset that pair images with depth and mask. The datasets which involve depth cannot be created using crowd source annotation, instead they rely on 3D range sensors. This XYZ is experimentally created with the help of existing depth predictors and foreground creators.
 
