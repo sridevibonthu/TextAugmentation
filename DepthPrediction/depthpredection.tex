@@ -5,8 +5,9 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage[ruled,vlined]{algorithm2e}
+\SetKw{KwBy}{by}
 
-\title{A Dense Depth and Forground images dataset of Stray Animals (some name XYZ)}
+\title{A Dense Depth and Foreground images dataset of Stray Animals (some name XYZ)}
 
 
 \begin{document}
@@ -14,19 +15,36 @@
 \maketitle
 
 \begin{abstract}
-Dataset creation
+Custom Dataset of Stray Animals for Monocular Depth Estimation and Segmentation (MODES) 
+Dataset creation. 
+
+This work experimentally produces a dataset of size 4M records, where each record is a combination of 4 images from a very limited input. The input taken to generate this dataset are 100 background images and 100 foreground images.
+
+How this dataset is unique and differs from the existing ones?  Firstly, It is a dedicated dataset for stray animals. and Secondly, the large
+volume of data recorded: 40,00,000 tuples where each tuple is composed of a RGB image, a depth image, and a mask of the animal. 
 
 limitation lacking ground truth
 
-Depth and foreground prediction
+Depth and foreground prediction.
 
+This paper presents a model to establish the baseline as the start point to develop more recognition algorithms. The XYZ dataset is publicly availble at\footnote{datasetwebsite}.
 
+Keywords : Dataset, Depth image, mask, Depth prediction,
 \end{abstract}
 
  
 
 \section{Introduction}
+Objectives :
 
+1. Building a custom dataset for Monocular Depth Estimation and Segmentation simultaneously specific to stray animals.
+
+2. Linking this dataset to a model.
+
+
+What is depth ? - A depth image is an image channel in which each pixel relates to a distance between the image plane and the corresponding object in the RGB image
+
+RGBD image is a combination of a RGB image and its corresponding depth image. 
 we introduce XYZ, a dataset that contains millions of depth and forground images of stray animals derived from few hundreds of images. XYZ is the first dataset which has stray animals. The dataset is available for download at ....link...
 This is an RGBDM dataset that pair images with depth and mask. The datasets which involve depth cannot be created using crowd source annotation, instead they rely on 3D range sensors. This XYZ is experimentally created with the help of existing depth predictors and foreground creators.
 
@@ -96,90 +114,99 @@ we designed the dataset with the following objectives...
 4. dataset should provide foreground images
 
 \subsection{Data Acquisition}
-
-\begin{figure}
-  \begin{subfigure}{13cm}
-    \centering\includegraphics[width=10cm]{bgimages.jpg}
-    \caption{Background images}
-  \end{subfigure}
-  \begin{subfigure}{13cm}
-    \centering\includegraphics[width=10cm]{fgimages.jpg}
-    \caption{Foreground images}
-  \end{subfigure}
- 
-  \begin{subfigure}{13cm}
-    \centering\includegraphics[width=10cm]{fgmask.jpg}
-    \caption{Foreground mask}
-  \end{subfigure}
-  
-  \caption{Fig a. shows 10 sample images from the 100 background images used for dataset generation. Fig. b shows 10 sample images from the 200 foreground images and Fig c. showcases the corresponding masks of the foreground images.}
-  \label{fig:sourcedata}
-\end{figure}
-
-
-
+The Related work says that the depth measurement took place with variety of devices like kinects, structure light cameras, and LiDAR etc. This work mainly focusing on the generation of huge dataset with limited availability of scene images and foreground images. This work generates foreground images and masks using GIMP \cite{howat2014greenland} software and depth maps by using the model proposed by Ibraheem Alhashim et al. in their paper titled "High Quality Monocular Depth Estimation via Transfer Learning" \cite{alhashim2018high} and the source code is available at \footnote{https://github.com/ialhashim/DenseDepth/blob/master/DenseDepth.ipynb}. The main source images for the dataset are 100 scene images, and 100 images of objects. We are referring scene images here as background images. They consists of the locations where stray animals usually move like strets, main roads, front view of shops, markets, railway tracks, landscapes etc. A maximal random crop of 448x448 without affecting the image aspect is done on background images. The object picked for this custom dataset creation is stray animals (mostly cows/bull/calf etc.). We have taken care to include single animals, group of animals, front, back and side poses of animals, all age group animals, and many coloured cows. Figure shows few of the sample background and foreground images used for the creation of this dataset. From these 100 selected foreground objects, we have created 200 transparent objects. Several tools like Photoshop's magic wand, lasso tool, online resources to remove backgrounds\footnote{https://www.remove.bg/}, were used to create transparent foreground images. These 100 images are flipped horizontally to get 200 foreground images.
 
 \subsection{Data Curation and Processing}
+To create the main dataset we used the selected 100 background images and the 200 foreground images. The entire procedure followed to create the dataset is represented in the form of algorithm.
+
+\begin{algorithm}[H]
+\SetAlgoLined
+\KwResult{creates 3 folders with fg\_bg, mask and depth each having 400K images} 
+bg\_count := \textit{length(bg\_images list)} \;
+fg\_count := \textit{length(fg\_images list)} \;
+
+  \For{$i\gets1$ \KwTo $bg\_count$ \KwBy $1$}{
+    \For{$i\gets1$ \KwTo $fg\_count$ \KwBy $1$}{
+  \For{$i\gets1$ \KwTo $20$ \KwBy $1$}{
+        randomly pick a center point on image (two numbers in range 0 to 447 for x, y) \;
+     	  randomly pick a scale between .3 and .6 indicating how much square area should fg overlap on bg \;
+     resize the fg to scale and place it on top of bg centered at x, y calculated \;
+save it at 224x224 resolution in a zip folder \;
+calculate mask by setting a binary image to transparency channel of fg image, with trasparent = 0 amd non transparent=1 \;
+save mask at 224x224 resolution \;
+ add 448x448 image to numpy array for depth calculation \;
+    }
+    }
+	 \tcp*{Overlaying of all foreground images on a single background image is completed. }	    
+    run depth model on 4K images\;
+    save depth images of 224x224 in zipfolder \;
+
+    }
+\caption{Generate\_Dataset(\textit{[bgimages]}, \textit{[fgimages]})}
+\end{algorithm}
 
 
+\subsubsection{fg\_bg images}
+To generate fg\_bg images, the foreground image is overlaid on background images randomly for 20 times.
+\subsubsection{masks of fg\_bg images}
+fg\_bg image is obtained by overlaying the foreground image on the background images. To generate 4K images from a single background image, we overlaid a fg image 20 times on the same background image at random locations. To do this a random center point $(x, y)$ in the range $0 to 447$ and a random scale in between $0.3 to 0.6$ to indicate how much square area should foreground overlap on background are picked. Next the foreground image is resized to scale and placed on top of the background image centered at $(x, y)$. Save this overlaid image with $224 X 224$ resolution. As the number of foreground images are 200, the total number of overlaid images per background becomes 4000. By repeating the same procedure for all the 100 background images, the total number of fg on bg images becomes 400000. A set of sample images after overlaying foreground on background are shown in Fig.
 
-\begin{figure}
-  \begin{subfigure}{13cm}
-    \centering\includegraphics[width=10cm]{overlay.jpg}
-    \caption{overlaying foreground on Background images}
-  \end{subfigure}
-  \begin{subfigure}{13cm}
-    \centering\includegraphics[width=10cm]{overlay mask.jpg}
-    \caption{masks}
-  \end{subfigure}
- 
-  \begin{subfigure}{13cm}
-    \centering\includegraphics[width=10cm]{overlaydepth.jpg}
-    \caption{depths}
-  \end{subfigure}
-  
-  \caption{Fig a. placing foreground over background with random loacation and scale. Fig. b and c show the corresponding masks and depths of Fig. a}
-  \label{fig:finaldata}
-\end{figure}
+\subsubsection{depth maps of fg\_bg images}
+We used nyu.h5 model for depth calcualtion from dense depth paper. This model requires input images to be of 448x448 resolution and produces 224x224 size depth image. A set of sample depth images are shown in fig.
+
+\subsubsection{Directory Structure}
 
 
+\subsection{Data Statistics}
+Every image (fgbg, mask, depth) in the dataset are of size 224 X 224. The distribution of fgbg, mask and depth values for XYZ dataset are shown in fig. The dataset has 400000 records. A train-test-split of (70-30) gives a training set size of 280000 and 120000. A sample record in the dataset contains paths to all the images as hown belowe.
 
+\textit{('./data/bgimages/bgimg099.jpg', 
+'./data/out2/images/fgbg392483.jpg', 
+'./data/out2/masks/mask392483.jpg', 
+'./data/out2/depth/fgbg392483.jpg')}
 
-
-
+\section{Experiments}
+In this section, we provide a baseline for monocular depth estimation and segmentation on the XYZ dataset. 
+The state-of-the-art models for image segmentation are variants of U-Net and fully convolutional networks (FCN)\cite{drozdzal2016importance}. long skip connections are used to skip features from the contracting path to the expanding path in order to recover spatial information lost during downsampling \cite{zhou2019unet++}. Short skip connections can be used to build deep FCNs. By using both long and short skip connections we proposed a model following U-Net architecture. This model has one encoder and two decoders, each meant for mask and depth prediction.
+\subsection{Model}
+We have designed a model with one encoder and two decoders with skip connections. The architecture is shown in Fig \ref{fig:modelarch}. The total no.of parameters of this model are 5,525,568. We have trained this model on the entire XYZ dataset from scratch. During training the network is trained with the batch size of 64 for 10 epochs using SGD optimizer \cite{bottou2010large}. We have used OneCycleLR scheduler \cite{smith2018disciplined} with a maximum Learning rate of 0.1. This made the initial learning rate as 0.0099. The Deep Convolutional Neural Networks encoder is fed with a image (224 X 224) and the first decoder outputs a mask image and and second decoder outputs a depth image. To reduce overfitting\cite{perez2017effectiveness}, this work employed Random Rotation, Random Grayscale, Color Jitter, random horizontal flips and random chaneel swaps for data augmentation.
 
 \begin{figure}[h!]
 \centering
-  \includegraphics[width=1\textwidth]{layoutofdataset.jpg}
-  \caption{Top-level layout of the dataset (Directory Structure)}
-  \label{fig:directorystructure}
+  \includegraphics[width=1\textwidth]{networkarchitecture.jpg}
+  \caption{Network Architecture}
+  \label{fig:modelarch}
 \end{figure}
 
-\subsection{Data Statistics}
+The Loss is calculated with the help of L1 loss and Structural Similarity (SSIM) at both the decoders. We have also employed regularization for weight penality.
 
-\begin{table}[]
-\begin{tabular}{|l|l|l|l|}
-\hline
-Type of Image & Total  & Mean                                  & Standard Deviation                     \\ \hline
-fg\_bg        & 400000 & ( 0.50610699, 0.5250236, 0.51219183 ) & ( 0.28525343, 0.24801724, 0.24747186 ) \\ \hline
-mask          & 400000 & ( 0.13532567, )                       & ( 0.33999708, )                        \\ \hline
-depth         & 400000 & ( 0.57016144, )                       & ( 0.25914387, )                        \\ \hline
-\end{tabular}
-\end{table}
+For training our network with two decoders, we defined the same loss function $L$ between $y$ and $\hat{y}$ as the weighted sum of two loss function values.
 
-\section{Experiments}
-In this section, we provide a baseline for monocular depth estimation on the XYZ dataset
-\subsection{Model}
-We train two models on the subsets of XYZ and as well as the entire dataset. During training, all networks are trained with the batch size of ...for ... epochs using SGD[reference]. We start with a learning rate 0.0001 and decrease it by one tenth after 20 epochs (this sentence has to bre replaced by my approach). The DNN is fed with a full-resolution image (XXY) and outputs the predicted depth at the resolution (XXY). we employ .. and .. and... for data augmentation.
+\begin{equation}
+L(y, \hat{y}) = \lambda L_{term1}(y, \hat{y}) + (1 - \lambda) L_{term2}(y, \hat{y})
+\end{equation}
 
-\subsubsection{Model1}
-Network Architecture
-Loss calculation
-Learning and Inference
-Augmentation Policy
+The first loss term $L_{term1}(y, \hat{y})$ is the point-wise L1 loss defined on mask values at the first decoder and on depth values at the second decoder.
+
+\begin{equation}
+L_{term1}(y, \hat{y}) = \frac{1}{n} \sum_{x=1}^{n} \mid y_i - \hat{y_i} \mid
+\end{equation}
+
+we have also used weight decay... do we need to add it in the form of euation???????????
+
+The second loss term $L_{term2}(y, \hat{y})$ uses a commonly used metric for image reconstruction task i.e., SSIM. Many recent tood depth prediction CNNs employed this metric. The loss term is redefined as shown in equation as SSIM has an upper bound of one.
+
+\begin{equation}
+L_{term1}(y, \hat{y}) = \frac{1 - SSIM(y, \hat{y})}{2}
+\end{equation}
+
+Different weight parameters $\lambda$ were tried and we have ended with a value $\lambda = 0.84$. The final loss function is as follows.
+
+\begin{equation}
+L(y, \hat{y}) = 0.84 \ast L_{term1}(y, \hat{y}) + 0.16 \ast L_{term2}(y, \hat{y})
+\end{equation}
+
 \subsection{Evaluation}
-
-We evaluate the performance of the model on the valida-tion set using
 \subsection{Analysis}
 
 3. 
@@ -197,5 +224,28 @@ This paper and the research behind it would not have been possible without the e
 
 \bibitem{marchand2015pose} Marchand, Eric, Hideaki Uchiyama, and Fabien Spindler. "Pose estimation for augmented reality: a hands-on survey." IEEE transactions on visualization and computer graphics 22.12 (2015): 2633-2651.
 
+\bibitem{alhashim2018high} Alhashim, Ibraheem, and Peter Wonka. "High quality monocular depth estimation via transfer learning." arXiv preprint arXiv:1812.11941 (2018).
+
+\bibitem{howat2014greenland} Howat, Ian M., A. Negrete, and Benjamin E. Smith. "The Greenland Ice Mapping Project (GIMP) land classification and surface elevation data sets." The Cryosphere 8.4 (2014): 1509-1518.
+
+\bibitem{drozdzal2016importance} Drozdzal, Michal, et al. "The importance of skip connections in biomedical image segmentation." Deep Learning and Data Labeling for Medical Applications. Springer, Cham, 2016. 179-187.
+
+\bibitem{zhou2019unet++} Zhou, Zongwei, et al. "Unet++: Redesigning skip connections to exploit multiscale features in image segmentation." IEEE transactions on medical imaging 39.6 (2019): 1856-1867.
+
+\bibitem{bottou2010large} Bottou, Léon. "Large-scale machine learning with stochastic gradient descent." Proceedings of COMPSTAT'2010. Physica-Verlag HD, 2010. 177-186.
+
+\bibitem{smith2018disciplined} Smith, Leslie N. "A disciplined approach to neural network hyper-parameters: Part 1--learning rate, batch size, momentum, and weight decay." arXiv preprint arXiv:1803.09820 (2018).
+
+\bibitem{perez2017effectiveness} Perez, Luis, and Jason Wang. "The effectiveness of data augmentation in image classification using deep learning." arXiv preprint arXiv:1712.04621 (2017).
+
 \end{thebibliography}
 \end{document}
+\section{Conclusion}
+\section{Acknowledgement}
+This paper and the research behind it would not have been possible without the exceptional support and computing facilities of my Institution, Vishnu Institute of Technology.
+\begin{thebibliography}{10}
+
+
+
+\end{thebibliography}
+\end{document}==
