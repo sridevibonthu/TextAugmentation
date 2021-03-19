@@ -1,6 +1,7 @@
+\backcite {lin2018joint}{{1}{1}{section.1}}
 \backcite {abuolaim2020defocus}{{1}{1}{section.1}}
 \backcite {amza2012review}{{1}{1}{section.1}}
-\backcite {zhang2018deep}{{1}{1}{section.1}}
+\backcite {zhang2018deep}{{2}{1}{section.1}}
 \backcite {marchand2015pose}{{2}{1}{section.1}}
 \backcite {}{{2}{1}{section.1}}
 \backcite {alhashim2018high}{{2}{1}{section.1}}
@@ -16,7 +17,7 @@
 \backcite {xian2018monocular}{{2}{2}{section.2}}
 \backcite {saxena2008make3d}{{2}{2}{section.2}}
 \backcite {silberman2012indoor}{{2}{2}{section.2}}
-\backcite {howat2014greenland}{{2}{3.1}{subsection.3.1}}
+\backcite {howat2014greenland}{{3}{3.1}{subsection.3.1}}
 \backcite {alhashim2018high}{{3}{3.1}{subsection.3.1}}
 \backcite {alhashim2018high}{{4}{3.2.3}{subsubsection.3.2.3}}
 \backcite {drozdzal2016importance}{{4}{5}{section.5}}

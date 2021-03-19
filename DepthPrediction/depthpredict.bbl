@@ -56,6 +56,12 @@ Zhengqi Li and Noah Snavely.
 \newblock In {\em Proceedings of the IEEE Conference on Computer Vision and
   Pattern Recognition}, pages 2041--2050, 2018.
 
+\bibitem{lin2018joint}
+Zhe Lin, Scott~D Cohen, Peng Wang, SHEN Xiaohui, and Brian~L Price.
+\newblock Joint depth estimation and semantic segmentation from a single image,
+  July~10 2018.
+\newblock US Patent 10,019,657.
+
 \bibitem{marchand2015pose}
 Eric Marchand, Hideaki Uchiyama, and Fabien Spindler.
 \newblock Pose estimation for augmented reality: a hands-on survey.
