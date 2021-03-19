@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex depthpredict"] 1616153751 "depthpredict.aux" "depthpredict.bbl" "depthpredict" 1616153753
+["bibtex depthpredict"] 1616153751 "depthpredict.aux" "depthpredict.bbl" "depthpredict" 1616159926
   "./ieee_fullname.bst" 1589819726 19905 72b73f4cb1c51eaa1a7af8ecad2b6bfb ""
   "depthpredict.aux" 1616153753 7944 420eae4ea8ed435760b9d92028c9c89d "pdflatex"
   "references.bib" 1616151945 6943 a43e144e05d1324c321dee5ca7117647 ""
   (generated)
-  "depthpredict.bbl"
   "depthpredict.blg"
-["pdflatex"] 1616153751 "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex" "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.pdf" "depthpredict" 1616153753
+  "depthpredict.bbl"
+["pdflatex"] 1616153751 "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex" "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.pdf" "depthpredict" 1616159926
   "C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
   "C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136765053 960 379cc0019370a9e0208a0a3f949f847a ""
   "C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136765053 1292 bd42be2f344128bff6d35d98474adfe3 ""
@@ -129,9 +129,9 @@
   "overlaymask.jpg" 1616151001 19166 4412c40b370c6887e2b08d8afb6a55ca ""
   "samplerecord.png" 1616059698 117939 66760f5304a7698b63381976f53b3b89 ""
   (generated)
+  "depthpredict.aux"
+  "depthpredict.log"
   "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.log"
   "depthpredict.brf"
-  "depthpredict.log"
-  "depthpredict.aux"
-  "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.pdf"
   "depthpredict.pdf"
+  "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.pdf"
