@@ -215,11 +215,25 @@ balancing the types and views. For example, for cattle on roads dataset, we shos
  or in group, sitting, standing or walking, and from various angles. Similarly for background, we chose backgrounds of streets, 
  storefronts, main roads, highways, markets, railway tracks, landscapes, garbage piles etc.
 PNG images with transparency are readily available on the internet for almost any desired foreground object.
-Such images will easily allow to generate foreground mask from non-transparent pixels. If not, tools like GIMP~\cite{howat2014greenland}, 
-combined with deep learning forground extractors (Authors used remove.bg~\cite{website reference} that uses a combination of Image based techniques 
+Such images will easily allow to generate foreground mask from non-transparent pixels. 
+If not, tools like GIMP~\cite{howat2014greenland}, combined with deep learning forground extractors\footnote{https://www.remove.bg/}
+that uses a combination of Image based techniques .
 and DNN to separate foreground from background) can help generate the required PNG foreground images.
 
-% ADD FIGURES for cattle as an example to show sample foreground and background images
+\begin{figure*}
+  \begin{center}
+  \begin{tabular}{@{}c@{}}
+    \includegraphics[width=0.8\linewidth]{bgimages.jpg}
+  \end{tabular}
+  \begin{tabular}{@{}c@{}}
+      \includegraphics[width=0.8\linewidth]{fgimages.jpg}
+  \end{tabular}
+  \end{center}
+  \caption{Scene and foreground object images}
+  \label{fig:sceneandfg}
+\end{figure*}
+
+Fig.~\ref{fig:sceneandfg} shows few of the sample scene and foreground images used for the creation of this dataset. 
 
 \subsection{Multiplexing and Depth Generation}
 
@@ -232,7 +246,7 @@ This model takes $448\times448$ size images as input, hence we resize all backfr
 The data generation process is completely online and produces one batch of images for training a deep model.
 By repeating one forground object $k$ times for each background image and repeating another $k$ times with horizontally
 flipped version of the same foreground, one can generate $2kmn$ fg-bg images. 
-For $k=20$ and $n=m=100$ this becomes $400,000$ fg-bg images. Algorithm \ref{algo:datagen} descrbes the data generation process
+For $k=20$ and $n=m=100$ this becomes $400,000$ fg-bg images. Algorithm \ref{algo:datagen} describes the data generation process
 
 \IncMargin{1em}
 \begin{algorithm*}
@@ -240,13 +254,13 @@ For $k=20$ and $n=m=100$ this becomes $400,000$ fg-bg images. Algorithm \ref{alg
   \SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
   \SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
   \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
-  \Input{$m$ Background Image paths, $n$ Foreground Image paths, multiplexing factor $k$, batch size $b$ \emph{must be multiple of $k$}}
+  \Input{$m$ Background Image paths, $2n$ Foreground Image paths, multiplexing factor $k$, batch size $b$ \emph{must be multiple of $k$}}
   \Output{Yield $2kmn$ fg-bg, mask and depth images in batches of size $b$}
   \BlankLine
   \emph{for offline use it creates 3 folders with fg\_bg, mask and depth each having $2kmn$ images}\;
 
   \For{$bg\leftarrow 1$ \KwTo $m$}{
-    \For{$fg\leftarrow 1$ \KwTo $n$}{
+    \For{$fg\leftarrow 1$ \KwTo $2n$}{
       \For{$i\leftarrow 1$ \KwTo $k$}{
         $croppedbg\leftarrow$ take maximal random crop of $448\times448$ from $bg$ without affecting the aspect ratio\;
         randomly pick a center point $(x, y)$ in range $[0,447]$\;
@@ -264,41 +278,13 @@ For $k=20$ and $n=m=100$ this becomes $400,000$ fg-bg images. Algorithm \ref{alg
 \end{algorithm*}
 
 
-
 %The Related work says that the depth measurement took place with variety of devices like kinects, structure light cameras, and LiDAR etc. 
 %This work mainly focusing on the generation of huge dataset with limited availability of scene images and foreground images. 
-This work generates transparent foreground images and masks using GIMP~\cite{howat2014greenland} software and 
-depth maps by using 
-The main source images for the dataset are 100 scene images, and 100 images of objects. 
 
-A maximal random crop of $448 X 448$ without affecting the image aspect is done on 
-background images. The object picked for this custom dataset creation is stray animals (mostly cows/bull/calf etc.). 
-We have taken care to include single animals, group of animals, front, back and side poses of animals, 
-all age group animals, and many coloured cows. 
-Fig.~\ref{fig:sceneandfg} shows few of the sample scene and foreground images used for the creation of this dataset. 
-From these 100 selected foreground objects, we have created 200 transparent objects. 
-Several tools like Photoshop's magic wand, lasso tool, 
-online resources to remove backgrounds\footnote{https://www.remove.bg/}, 
-were used to create transparent foreground images. These 100 images are flipped horizontally to get 200 
-foreground images. 
 
-\begin{figure*}
-  \begin{center}
-  \begin{tabular}{@{}c@{}}
-    \includegraphics[width=0.8\linewidth]{bgimages.jpg}
-  \end{tabular}
-  \begin{tabular}{@{}c@{}}
-      \includegraphics[width=0.8\linewidth]{fgimages.jpg}
-  \end{tabular}
-  \end{center}
-  \caption{Scene and foreground object images}
-  \label{fig:sceneandfg}
-\end{figure*}
 
 \subsection{Data Curation and Processing}
-To create the main dataset of 400K images, we used the selected 100 background images and the 200 foreground images. 
-The entire procedure followed to create the dataset is represented in the form of algorithm. 
-
+% this may not be required
 
 Fig.~\ref{fig:finaldataset} shows the three outcomes of the above algorithm for a set of images.
 
