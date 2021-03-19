@@ -1,347 +1,182 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6840 64-bit) (preloaded format=pdflatex 2018.10.27)  18 MAR 2021 17:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.6.29) (preloaded format=pdflatex 2020.9.1)  19 MAR 2021 12:48
 entering extended mode
-**h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex
-(h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex
-LaTeX2e <2018-04-01> patch level 5
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
-Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
-File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+**./depthpredict.tex
+(depthpredict.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-06-18>
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 )
-\c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
-\bibindent=\dimen102
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\multirow\multirow.sty"
-Package: multirow 2018/08/03 v2.3 Span multiple rows of a table
-\multirow@colwidth=\skip43
-\multirow@cntb=\count88
-\multirow@dima=\skip44
-\bigstrutjot=\dimen103
-) (C:\Users\abhinav\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\subcaption.sty
-Package: subcaption 2018/05/01 v1.1-162 Sub-captions (AR)
- (C:\Users\abhinav\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption.sty
-Package: caption 2018/10/06 v3.3-154 Customizing captions (AR)
- (C:\Users\abhinav\AppData\Roaming\MiKTeX\2.9\tex\latex\caption\caption3.sty
-Package: caption3 2018/09/12 v1.8c caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 64.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+\c@part=\count167
+\c@section=\count168
+\c@subsection=\count169
+\c@subsubsection=\count170
+\c@paragraph=\count171
+\c@subparagraph=\count172
+\c@figure=\count173
+\c@table=\count174
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+)
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
+\multirow@colwidth=\skip49
+\multirow@cntb=\count175
+\multirow@dima=\skip50
+\bigstrutjot=\dimen135
+)
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/caption\subcaption.sty
+Package: subcaption 2020/10/07 v1.3j Sub-captions (AR)
+
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+Package: caption 2020/10/26 v3.5g Customizing captions (AR)
+
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
+
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks14
+\KV@toks@=\toks15
 )
-\captionmargin=\dimen104
-\captionmargin@=\dimen105
-\captionwidth=\dimen106
-\caption@tempdima=\dimen107
-\caption@indent=\dimen108
-\caption@parindent=\dimen109
-\caption@hangindent=\dimen110
+\captionmargin=\dimen136
+\captionmargin@=\dimen137
+\captionwidth=\dimen138
+\caption@tempdima=\dimen139
+\caption@indent=\dimen140
+\caption@parindent=\dimen141
+\caption@hangindent=\dimen142
+Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count89
-\c@ContinuedFloat=\count90
+\c@caption@flags=\count176
+\c@continuedfloat=\count177
 )
-\c@subfigure=\count91
-\c@subtable=\count92
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
-Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
- ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
-Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
- ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+\c@subfigure=\count178
+\c@subtable=\count179
+) (C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
+
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-cfg\graphics.cfg"
+)
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 99.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics-def\pdftex.def"
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen111
-\Gin@req@width=\dimen112
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\base\textcomp.sty"
-Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
-Package textcomp Info: Sub-encoding information:
-(textcomp)               5 = only ISO-Adobe without \textcurrency
-(textcomp)               4 = 5 + \texteuro
-(textcomp)               3 = 4 + \textohm
-(textcomp)               2 = 3 + \textestimated + \textcurrency
-(textcomp)               1 = TS1 - \textcircled - \t
-(textcomp)               0 = TS1 (full)
-(textcomp)             Font families with sub-encoding setting implement
-(textcomp)             only a restricted character set as indicated.
-(textcomp)             Family '?' is the default used for unknown fonts.
-(textcomp)             See the documentation for details.
-Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.def"
-File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-Now handling font encoding TS1 ...
-... processing UTF-8 mapping file for font encoding TS1
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1enc.dfu"
-File: ts1enc.dfu 2018/04/05 v1.2c UTF-8 support for inputenc
-   defining Unicode char U+00A2 (decimal 162)
-   defining Unicode char U+00A3 (decimal 163)
-   defining Unicode char U+00A4 (decimal 164)
-   defining Unicode char U+00A5 (decimal 165)
-   defining Unicode char U+00A6 (decimal 166)
-   defining Unicode char U+00A7 (decimal 167)
-   defining Unicode char U+00A8 (decimal 168)
-   defining Unicode char U+00A9 (decimal 169)
-   defining Unicode char U+00AA (decimal 170)
-   defining Unicode char U+00AC (decimal 172)
-   defining Unicode char U+00AE (decimal 174)
-   defining Unicode char U+00AF (decimal 175)
-   defining Unicode char U+00B0 (decimal 176)
-   defining Unicode char U+00B1 (decimal 177)
-   defining Unicode char U+00B2 (decimal 178)
-   defining Unicode char U+00B3 (decimal 179)
-   defining Unicode char U+00B4 (decimal 180)
-   defining Unicode char U+00B5 (decimal 181)
-   defining Unicode char U+00B6 (decimal 182)
-   defining Unicode char U+00B7 (decimal 183)
-   defining Unicode char U+00B9 (decimal 185)
-   defining Unicode char U+00BA (decimal 186)
-   defining Unicode char U+00BC (decimal 188)
-   defining Unicode char U+00BD (decimal 189)
-   defining Unicode char U+00BE (decimal 190)
-   defining Unicode char U+00D7 (decimal 215)
-   defining Unicode char U+00F7 (decimal 247)
-   defining Unicode char U+0192 (decimal 402)
-   defining Unicode char U+02C7 (decimal 711)
-   defining Unicode char U+02D8 (decimal 728)
-   defining Unicode char U+02DD (decimal 733)
-   defining Unicode char U+0E3F (decimal 3647)
-   defining Unicode char U+2016 (decimal 8214)
-   defining Unicode char U+2020 (decimal 8224)
-   defining Unicode char U+2021 (decimal 8225)
-   defining Unicode char U+2022 (decimal 8226)
-   defining Unicode char U+2030 (decimal 8240)
-   defining Unicode char U+2031 (decimal 8241)
-   defining Unicode char U+203B (decimal 8251)
-   defining Unicode char U+203D (decimal 8253)
-   defining Unicode char U+2044 (decimal 8260)
-   defining Unicode char U+204E (decimal 8270)
-   defining Unicode char U+2052 (decimal 8274)
-   defining Unicode char U+20A1 (decimal 8353)
-   defining Unicode char U+20A4 (decimal 8356)
-   defining Unicode char U+20A6 (decimal 8358)
-   defining Unicode char U+20A9 (decimal 8361)
-   defining Unicode char U+20AB (decimal 8363)
-   defining Unicode char U+20AC (decimal 8364)
-   defining Unicode char U+20B1 (decimal 8369)
-   defining Unicode char U+2103 (decimal 8451)
-   defining Unicode char U+2116 (decimal 8470)
-   defining Unicode char U+2117 (decimal 8471)
-   defining Unicode char U+211E (decimal 8478)
-   defining Unicode char U+2120 (decimal 8480)
-   defining Unicode char U+2122 (decimal 8482)
-   defining Unicode char U+2126 (decimal 8486)
-   defining Unicode char U+2127 (decimal 8487)
-   defining Unicode char U+212E (decimal 8494)
-   defining Unicode char U+2190 (decimal 8592)
-   defining Unicode char U+2191 (decimal 8593)
-   defining Unicode char U+2192 (decimal 8594)
-   defining Unicode char U+2193 (decimal 8595)
-   defining Unicode char U+2329 (decimal 9001)
-   defining Unicode char U+232A (decimal 9002)
-   defining Unicode char U+2422 (decimal 9250)
-   defining Unicode char U+25E6 (decimal 9702)
-   defining Unicode char U+25EF (decimal 9711)
-   defining Unicode char U+266A (decimal 9834)
-   defining Unicode char U+FEFF (decimal 65279)
-))
-LaTeX Info: Redefining \oldstylenums on input line 334.
-Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
-Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
-Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
-Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
-Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
-Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
-Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
-Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
-Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
-Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
-Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
-Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
-Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
-Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
-Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
-Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
-Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
-Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
-Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
-Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
-Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
-Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
-Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
-Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
-Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
-Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
-Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
-Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
-Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
-Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
-Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
-Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
-Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
-Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
-Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
-Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
-Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
-Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
-Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
-Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
-Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
-Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
-Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
-Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
-Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
-Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
-Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
-Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
-Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
-Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
-Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
-Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
-Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
-Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
-Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
-Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
-Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
-Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
-Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
-Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
-Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
-) (C:\Users\abhinav\AppData\Roaming\MiKTeX\2.9\tex\latex\algorithm2e\algorithm2e.sty
+\Gin@req@height=\dimen143
+\Gin@req@width=\dimen144
+) (C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/base\textcomp.sty
+Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
+)
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/algorithm2e\algorithm2e
+.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
-\c@AlgoLine=\count93
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+\c@AlgoLine=\count180
+ (C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\algocf@hangindent=\skip45
- (C:\Users\abhinav\AppData\Roaming\MiKTeX\2.9\tex\latex\ifoddpage\ifoddpage.sty
+\algocf@hangindent=\skip51
+
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/ifoddpage\ifoddpage.sty
 Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
-\c@checkoddpage=\count94
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\tools\xspace.sty"
+\c@checkoddpage=\count181
+) (C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/tools\xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
-) (C:\Users\abhinav\AppData\Roaming\MiKTeX\2.9\tex\latex\relsize\relsize.sty
+)
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/relsize\relsize.sty
 Package: relsize 2013/03/29 ver 4.1
 )
-\skiptotal=\skip46
-\skiplinenumber=\skip47
-\skiprule=\skip48
-\skiphlne=\skip49
-\skiptext=\skip50
-\skiplength=\skip51
-\algomargin=\skip52
-\skipalgocfslide=\skip53
-\algowidth=\dimen113
-\inoutsize=\dimen114
-\inoutindent=\dimen115
-\interspacetitleruled=\dimen116
-\interspacealgoruled=\dimen117
-\interspacetitleboxruled=\dimen118
-\algocf@ruledwidth=\skip54
-\algocf@inoutbox=\box26
-\algocf@inputbox=\box27
-\AlCapSkip=\skip55
-\AlCapHSkip=\skip56
-\algoskipindent=\skip57
-\algocf@nlbox=\box28
-\algocf@hangingbox=\box29
-\algocf@untilbox=\box30
-\algocf@skipuntil=\skip58
-\algocf@capbox=\box31
-\algocf@lcaptionbox=\skip59
-\algoheightruledefault=\skip60
-\algoheightrule=\skip61
-\algotitleheightruledefault=\skip62
-\algotitleheightrule=\skip63
-\c@algocfline=\count95
-\c@algocfproc=\count96
-\c@algocf=\count97
-\algocf@algoframe=\box32
-\algocf@algobox=\box33
-) (h:/DataScience\modes\TextAugmentation\DepthPrediction\depthpredict.aux)
+\skiptotal=\skip52
+\skiplinenumber=\skip53
+\skiprule=\skip54
+\skiphlne=\skip55
+\skiptext=\skip56
+\skiplength=\skip57
+\algomargin=\skip58
+\skipalgocfslide=\skip59
+\algowidth=\dimen145
+\inoutsize=\dimen146
+\inoutindent=\dimen147
+\interspacetitleruled=\dimen148
+\interspacealgoruled=\dimen149
+\interspacetitleboxruled=\dimen150
+\algocf@ruledwidth=\skip60
+\algocf@inoutbox=\box45
+\algocf@inputbox=\box46
+\AlCapSkip=\skip61
+\AlCapHSkip=\skip62
+\algoskipindent=\skip63
+\algocf@nlbox=\box47
+\algocf@hangingbox=\box48
+\algocf@untilbox=\box49
+\algocf@skipuntil=\skip64
+\algocf@capbox=\box50
+\algocf@lcaptionbox=\skip65
+\algoheightruledefault=\skip66
+\algoheightrule=\skip67
+\algotitleheightruledefault=\skip68
+\algotitleheightrule=\skip69
+\c@algocfline=\count182
+\c@algocfproc=\count183
+\c@algocf=\count184
+\algocf@algoframe=\box51
+\algocf@algobox=\box52
+)
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+mode.def
+File: l3backend-pdfmode.def 2020-06-29 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count185
+\l__pdf_internal_box=\box53
+) (depthpredict.aux)
 \openout1 = `depthpredict.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 14.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
-File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    ... okay on input line 14.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
- (C:\Users\abhinav\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count98
-\scratchdimen=\dimen119
-\scratchbox=\box34
-\nofMPsegments=\count99
-\nofMParguments=\count100
-\everyMPshowfont=\toks15
-\MPscratchCnt=\count101
-\MPscratchDim=\dimen120
-\MPnumerator=\count102
-\makeMPintoPDFobject=\count103
-\everyMPtoPDFconversion=\toks16
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-base.sty"
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
- ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
-Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\grfext.sty"
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
- ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvdefinekeys.sty"
-Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
- ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
-Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
-))) ("C:\Program Files\MiKTeX 2.9\tex\latex\oberdiek\kvoptions.sty"
-Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
- ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\kvsetkeys.sty"
-Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
- ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
-Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
- (C:\Users\abhinav\AppData\Roaming\MiKTeX\2.9\tex\generic\iftex\ifluatex.sty
-Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
- (C:\Users\abhinav\AppData\Roaming\MiKTeX\2.9\tex\generic\iftex\iftex.sty
-Package: iftex 2020/03/06 v1.0d TeX engine tests
-))
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-))) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
-Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO)
- (C:\Users\abhinav\AppData\Roaming\MiKTeX\2.9\tex\generic\iftex\ifpdf.sty
-Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+\scratchcounter=\count186
+\scratchdimen=\dimen151
+\scratchbox=\box54
+\nofMPsegments=\count187
+\nofMParguments=\count188
+\everyMPshowfont=\toks16
+\MPscratchCnt=\count189
+\MPscratchDim=\dimen152
+\MPnumerator=\count190
+\makeMPintoPDFobject=\count191
+\everyMPtoPDFconversion=\toks17
 )
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 438.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
+(C:\Users\sride\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 16.
@@ -353,235 +188,124 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 LaTeX Warning: No \author given.
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <9> on input line 31.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 31.
 [1
 
-{C:/Users/abhinav/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-
-LaTeX Warning: Citation `abuolaim2020defocus' on page 2 undefined on input line 69.
-
-
-LaTeX Warning: Citation `zhang2018deep' on page 2 undefined on input line 70.
-
-
-LaTeX Warning: Citation `marchand2015pose' on page 2 undefined on input line 73.
-
-
-LaTeX Warning: Reference `fig:sampledatarecord' on page 2 undefined on input line 84.
-
-<samplerecord.png, id=12, 672.5125pt x 160.6pt>
+{C:/Users/sride/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
+<samplerecord.png, id=11, 672.5125pt x 160.6pt>
 File: samplerecord.png Graphic file (type png)
 <use samplerecord.png>
-Package pdftex.def Info: samplerecord.png  used on input line 88.
+Package pdftex.def Info: samplerecord.png  used on input line 60.
 (pdftex.def)             Requested size: 345.0pt x 82.38766pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[2]
-<finalepoch.png, id=18, 679.8198pt x 455.7828pt>
-File: finalepoch.png Graphic file (type png)
-<use finalepoch.png>
-Package pdftex.def Info: finalepoch.png  used on input line 105.
-(pdftex.def)             Requested size: 345.0pt x 231.30559pt.
-<unseen.jpeg, id=20, 867.24pt x 392.46625pt>
-File: unseen.jpeg Graphic file (type jpg)
-<use unseen.jpeg>
-Package pdftex.def Info: unseen.jpeg  used on input line 113.
-(pdftex.def)             Requested size: 345.0pt x 156.12735pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: Citation `geiger2013vision' on page 3 undefined on input line 124.
-
-
-LaTeX Warning: Citation `ros2016synthia' on page 3 undefined on input line 124.
-
-
-LaTeX Warning: Citation `saxena2008make3d' on page 3 undefined on input line 125.
-
-
-LaTeX Warning: Citation `silberman2012indoor' on page 3 undefined on input line 125.
-
-[3 <h:/DataScience/modes/TextAugmentation/DepthPrediction/samplerecord.png (PNG copy)> <h:/DataScience/modes/TextAugmentation/DepthPrediction/finalepoch.png>]
-
-LaTeX Warning: Citation `geiger2013vision' on page 4 undefined on input line 127.
-
-
-LaTeX Warning: Citation `ros2016synthia' on page 4 undefined on input line 130.
-
-
-LaTeX Warning: Citation `cordts2016cityscapes' on page 4 undefined on input line 131.
-
-
-LaTeX Warning: Citation `mayer2016large' on page 4 undefined on input line 132.
-
-
-LaTeX Warning: Citation `li2018megadepth' on page 4 undefined on input line 133.
-
-
-LaTeX Warning: Citation `saxena2008make3d' on page 4 undefined on input line 135.
-
-
-LaTeX Warning: Citation `silberman2012indoor' on page 4 undefined on input line 136.
-
-[4 <h:/DataScience/modes/TextAugmentation/DepthPrediction/unseen.jpeg>]
-
-LaTeX Warning: Citation `howat2014greenland' on page 5 undefined on input line 162.
-
-
-LaTeX Warning: Citation `alhashim2018high' on page 5 undefined on input line 164.
-
+ [2 <./samplerecord.png (PNG copy)>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 165.
+(Font)              <7> on input line 124.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 124.
 
-LaTeX Warning: Reference `fig:input-images' on page 5 undefined on input line 178.
 
-h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex:183: Undefined control sequence
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+LaTeX Warning: Reference `fig:input-images' on page 3 undefined on input line 1
+37.
 
-<bgimages.jpg, id=28, 633.86812pt x 60.225pt>
+[3]
+<bgimages.jpg, id=19, 633.86812pt x 60.225pt>
 File: bgimages.jpg Graphic file (type jpg)
 <use bgimages.jpg>
-Package pdftex.def Info: bgimages.jpg  used on input line 183.
+Package pdftex.def Info: bgimages.jpg  used on input line 142.
 (pdftex.def)             Requested size: 348.62854pt x 33.12384pt.
-h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex:186: Undefined control sequence
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-<fgimages.jpg, id=29, 636.12656pt x 60.225pt>
+<fgimages.jpg, id=20, 636.12656pt x 60.225pt>
 File: fgimages.jpg Graphic file (type jpg)
 <use fgimages.jpg>
-Package pdftex.def Info: fgimages.jpg  used on input line 186.
+Package pdftex.def Info: fgimages.jpg  used on input line 145.
 (pdftex.def)             Requested size: 349.87068pt x 33.12384pt.
 
-Overfull \hbox (24.51744pt too wide) in paragraph at lines 182--188
+Overfull \hbox (15.62856pt too wide) in paragraph at lines 141--147
  [][] 
  []
 
 
-Overfull \hbox (25.75958pt too wide) in paragraph at lines 182--188
+Overfull \hbox (16.8707pt too wide) in paragraph at lines 141--147
  [] 
  []
 
-[5 <h:/DataScience/modes/TextAugmentation/DepthPrediction/bgimages.jpg> <h:/DataScience/modes/TextAugmentation/DepthPrediction/fgimages.jpg>] [6]
-
-LaTeX Warning: Citation `alhashim2018high' on page 7 undefined on input line 256.
-
-h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex:263: Undefined control sequence
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-<overlay.jpg, id=41, 634.62094pt x 60.97781pt>
+[4 <./bgimages.jpg> <./fgimages.jpg>] [5]
+<overlay.jpg, id=34, 634.62094pt x 60.97781pt>
 File: overlay.jpg Graphic file (type jpg)
 <use overlay.jpg>
-Package pdftex.def Info: overlay.jpg  used on input line 263.
+Package pdftex.def Info: overlay.jpg  used on input line 222.
 (pdftex.def)             Requested size: 349.04259pt x 33.53789pt.
-h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex:266: Undefined control sequence
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-LaTeX Warning: File `overlaymask.jpg' not found on input line 266.
-
-
-h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex:266: Package pdftex.def Error: File `overlaymask.jpg' not found: using draft setting.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex:269: Undefined control sequence
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-<overlaydepth.jpg, id=42, 628.59843pt x 59.47218pt>
+<overlaymask.jpg, id=35, 633.86812pt x 57.21375pt>
+File: overlaymask.jpg Graphic file (type jpg)
+<use overlaymask.jpg>
+Package pdftex.def Info: overlaymask.jpg  used on input line 225.
+(pdftex.def)             Requested size: 348.62854pt x 31.46764pt.
+<overlaydepth.jpg, id=36, 628.59843pt x 59.47218pt>
 File: overlaydepth.jpg Graphic file (type jpg)
 <use overlaydepth.jpg>
-Package pdftex.def Info: overlaydepth.jpg  used on input line 269.
+Package pdftex.def Info: overlaydepth.jpg  used on input line 228.
 (pdftex.def)             Requested size: 345.73021pt x 32.7098pt.
 
-Overfull \hbox (24.93149pt too wide) in paragraph at lines 262--271
+Overfull \hbox (16.0426pt too wide) in paragraph at lines 221--230
  [][] 
  []
 
 
-Overfull \hbox (21.61911pt too wide) in paragraph at lines 262--271
+Overfull \hbox (15.62856pt too wide) in paragraph at lines 221--230
  [] 
  []
 
-[7 <h:/DataScience/modes/TextAugmentation/DepthPrediction/overlay.jpg> <h:/DataScience/modes/TextAugmentation/DepthPrediction/overlaydepth.jpg>]
-Overfull \hbox (145.99484pt too wide) in paragraph at lines 287--288
-[]\OT1/cmr/m/it/10 ('./data/bgimages/bgimg099.jpg', './data/out2/images/fgbg392483.jpg', './data/out2/masks/mask392483.jpg',
+
+Overfull \hbox (12.73022pt too wide) in paragraph at lines 221--230
+ [] 
  []
 
+[6 <./overlay.jpg> <./overlaymask.jpg> <./overlaydepth.jpg>]
+Overfull \hbox (145.99484pt too wide) in paragraph at lines 246--247
+[]\OT1/cmr/m/it/10 ('./data/bgimages/bgimg099.jpg', './data/out2/images/fgbg392
+483.jpg', './data/out2/masks/mask392483.jpg',
+ []
 
-LaTeX Warning: Citation `drozdzal2016importance' on page 8 undefined on input line 291.
-
-
-LaTeX Warning: Citation `zhou2019unet++' on page 8 undefined on input line 293.
-
-
-LaTeX Warning: Reference `fig:modelarch' on page 8 undefined on input line 298.
-
-
-LaTeX Warning: Citation `bottou2010large' on page 8 undefined on input line 300.
-
-
-LaTeX Warning: Citation `smith2018disciplined' on page 8 undefined on input line 301.
-
-
-LaTeX Warning: Citation `perez2017effectiveness' on page 8 undefined on input line 304.
-
-<networkarchitecture.jpg, id=47, 609.77812pt x 487.8225pt>
+<networkarchitecture.jpg, id=40, 609.77812pt x 487.8225pt>
 File: networkarchitecture.jpg Graphic file (type jpg)
 <use networkarchitecture.jpg>
-Package pdftex.def Info: networkarchitecture.jpg  used on input line 309.
+Package pdftex.def Info: networkarchitecture.jpg  used on input line 268.
 (pdftex.def)             Requested size: 345.0pt x 276.00728pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[8] [9 <h:/DataScience/modes/TextAugmentation/DepthPrediction/networkarchitecture.jpg>] [10] [11] (h:/DataScience\modes\TextAugmentation\DepthPrediction\depthpredict.aux)
+[7] [8 <./networkarchitecture.jpg>] [9] [10] (depthpredict.aux)
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
- 4288 strings out of 492970
- 68094 string characters out of 3135848
- 130329 words of memory out of 3000000
- 8109 multiletter control sequences out of 15000+200000
- 9629 words of font info for 34 fonts, out of 3000000 for 9000
+ 3606 strings out of 480790
+ 61137 string characters out of 2897302
+ 300768 words of memory out of 3000000
+ 19610 multiletter control sequences out of 15000+200000
+ 537714 words of font info for 42 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 47i,15n,40p,455b,392s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on h:/DataScience\modes\TextAugmentation\DepthPrediction\depthpredict.pdf (11 pages, 1384214 bytes).
+ 46i,15n,47p,523b,526s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/sride/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmbx10.pfb><C:/Users/sride/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmbx12.pfb><C:/Users/sride/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmbx9.pfb><C:/Users/sride/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/sride/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/sride/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/sride/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/sride/A
+ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users
+/sride/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><
+C:/Users/sride/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
+6.pfb><C:/Users/sride/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmr7.pfb><C:/Users/sride/AppData/Local/Programs/MiKTeX/fonts/type1/public/a
+msfonts/cm/cmr8.pfb><C:/Users/sride/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmr9.pfb><C:/Users/sride/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/sride/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/sride/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on depthpredict.pdf (10 pages, 502455 bytes).
 PDF statistics:
- 112 PDF objects out of 1000 (max. 8388607)
+ 106 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
