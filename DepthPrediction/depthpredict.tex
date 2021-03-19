@@ -1,36 +1,79 @@
-\documentclass{article}
-\usepackage{multirow}
-\usepackage{subcaption}
-\usepackage[labelformat=parens,labelsep=quad,skip=3pt]{caption}
-\usepackage{graphicx}
-\usepackage{textcomp}
-\usepackage[ruled,vlined]{algorithm2e}
-\SetKw{KwBy}{by}
+% This version of CVPR template is provided by Ming-Ming Cheng.
+% Please leave an issue if you found a bug:
+% https://github.com/MCG-NKU/CVPR_Template.
 
-\title{SmallDepthMask: Large DataSet Generation for Monocular Depth Estimation and Foreground Segmentation from few Internet Images}
-% tyhink of a better one word instead of SmallDepthMask
-% MoDES : Monocular Depth Estimation and Segmentation - A Dataset of Stray Bovine Animals
+\documentclass[review]{cvpr}
+%\documentclass[final]{cvpr}
+
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Include other packages here, before hyperref.
+
+% If you comment hyperref and then uncomment it, you should delete
+% egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
+% run, let it finish, and you should be clear).
+\usepackage[pagebackref=true,breaklinks=true,colorlinks,bookmarks=false]{hyperref}
+
+\usepackage[ruled,vlined]{algorithm2e}
+
+% Include other packages here, before hyperref.
+
+% If you comment hyperref and then uncomment it, you should delete
+% egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
+% run, let it finish, and you should be clear).
+\usepackage[breaklinks=true,bookmarks=false]{hyperref}
+
+
+\def\cvprPaperID{****} % *** Enter the CVPR Paper ID here
+\def\confYear{CVPR 2021}
+%\setcounter{page}{4321} % For final version only
+
 
 \begin{document}
 
+
+%%%%%%%%% TITLE
+\title{SmallDepthMask: Large DataSet Generation for Monocular Depth Estimation and Foreground Segmentation from few Internet Images}
+
+\author{Sridevi Bonthu\\
+Vishnu Institute of Technology\\
+Bhimavaram, AP, India 534202\\
+{\tt\small sridevi.b@vishnu.edu.in}
+% For a paper whose authors are all at the same institution,
+% omit the following lines up until the closing ``}''.
+% Additional authors and addresses can be added with ``\and'',
+% just like the second author.
+% To save space, use either the email address or home page, not both
+\and
+Abhinav Dayal\\
+Vishnu Institute of Technology\\
+Bhimavaram, AP, India 534202\\
+{\tt\small abhinav.dayal@vishnu.edu.in}
+}
+
 \maketitle
+%\thispagestyle{empty}
 
+%%%%%%%%% ABSTRACT
 \begin{abstract}
-Segmentation of the desired object along with depth estimation is useful in various applications like robotics and autonomous navigation. 
-Any deep learning workflow to segment the desired foreground object in a scene require significant training data.
-The data generation process usually involve expensive hardware like RGB-D sensors, Laser Scanners or significant manual involvement. 
-This paper presents a novel way to utilize only a small number of readily available png images with transparency for the foreground object, 
-and representative background images from the internet and combine them to generate a huge dataset for deep learning
-utilizing current state of the art monocular depth estimation and segmentation techniques. 
-Few example applications show the efficacy of the training data on detecting 
-cattle on road for autonomous driving application, etc. The baseline models exhibit strong generalization to real scenarios.
-% below is what we wrote previously
-
-Keywords : Large Dataset, Depth image, Segmentation Mask, Depth prediction, Custom Dataset, Baseline model.
+  Segmentation of the desired object along with depth estimation is useful in various applications like robotics and autonomous navigation. 
+  Any deep learning workflow to segment the desired foreground object in a scene require significant training data.
+  The data generation process usually involve expensive hardware like RGB-D sensors, Laser Scanners or significant manual involvement. 
+  This paper presents a novel way to utilize only a small number of readily available png images with transparency for the foreground object, 
+  and representative background images from the internet and combine them to generate a huge dataset for deep learning
+  utilizing current state of the art monocular depth estimation and segmentation techniques. 
+  Few example applications show the efficacy of the training data on detecting 
+  cattle on road for autonomous driving application, etc. The baseline models exhibit strong generalization to real scenarios.
 \end{abstract}
 
+%Keywords : Large Dataset, Depth image, Segmentation Mask, Depth prediction, Custom Dataset, Baseline model.
  
 
+%%%%%%%%% BODY TEXT
 \section{Introduction}
 Expand the abstract with appropriate references. We need references for:
 1. Monocular Depth
@@ -64,12 +107,13 @@ robotics, including mapping, localization and obstacle avoidance for terrestrial
 
 Figure \ref{fig:sampledatarecord} represents a few representative examples from MoDES dataset.
 
-\begin{figure}[h!]
-\centering
-  \includegraphics[width=1\textwidth]{samplerecord.png}
+\begin{figure*}
+  \begin{center}
+    \includegraphics[width=1\textwidth]{samplerecord.png}
+  \end{center}
   \caption{Sample Record which contains the background image, a cow overlayed on top of background, its mask and depth images}
   \label{fig:sampledatarecord}
-\end{figure}
+\end{figure*}
 
 The most important feature of \textit{SmallDepthMask} are -  It is an outcome of limited input. Every record in the dataset contains Background image, a background image on which a foreground image is overlay at random location, its respective segmentation mask, and dense depth image. Researchers can use this single dataset to do segmentation, train models to predict depth, or to predict both depth and mask. 
 
@@ -142,42 +186,42 @@ online resources to remove backgrounds\footnote{https://www.remove.bg/},
 were used to create transparent foreground images. These 100 images are flipped horizontally to get 200 
 foreground images. 
 
-\begin{figure}[h]
-\centering
-\begin{tabular}{c}
-\subfloat[] {\includegraphics[scale=0.55]{bgimages.jpg}}
-\end{tabular}
-\begin{tabular}{c}
-\subfloat[] {\includegraphics[scale=0.55]{fgimages.jpg}}
-\end{tabular}
-
-\caption{Scene and foreground object images}
-\label{fig:sceneandfg}
-\end{figure}
+\begin{figure*}
+  \begin{center}
+  \begin{tabular}{@{}c@{}}
+    \includegraphics[width=0.8\linewidth]{bgimages.jpg}
+  \end{tabular}
+  \begin{tabular}{@{}c@{}}
+      \includegraphics[width=0.8\linewidth]{fgimages.jpg}
+  \end{tabular}
+  \end{center}
+  \caption{Scene and foreground object images}
+  \label{fig:sceneandfg}
+\end{figure*}
 
 \subsection{Data Curation and Processing}
 To create the main dataset of 400K images, we used the selected 100 background images and the 200 foreground images. 
 The entire procedure followed to create the dataset is represented in the form of algorithm. 
 
-\begin{algorithm}[H]
+\IncMargin{1em}
+\begin{algorithm}
 \SetAlgoLined
 \KwResult{creates 3 folders with fg\_bg, mask and depth each having 400K images} 
 bg\_count := \textit{length(bg\_images list)} \;
 fg\_count := \textit{length(fg\_images list)} \;
-
-  \For{$i\gets1$ \KwTo $bg\_count$ \KwBy $1$}{
-    \For{$i\gets1$ \KwTo $fg\_count$ \KwBy $1$}{
-  \For{$i\gets1$ \KwTo $20$ \KwBy $1$}{
+  \For{$i\leftarrow 1$ \KwTo $bg\_count$}{
+    \For{$i\leftarrow 1$ \KwTo $fg\_count$}{
+      \For{$i\leftarrow 1$ \KwTo $20$}{
         randomly pick a center point (x, y)\;
-     	randomly pick a scale \;
-     	Place foreground on background by using scale and (x, y) \;
-		calculate mask \;
+     	randomly pick a scale\;
+     	Place foreground on background by using scale and (x, y)\;
+		calculate mask\;
     }
     }
 	 \tcp*{Overlaying of all foreground images on a single background image is completed. }	    
-    run depth model on 4K images\;
+    run depth model on 4K images
       }
-\caption{Generate\_Dataset(\textit{[bgimages]}, \textit{[fgimages]})}
+\caption{Generate Dataset(\textit{[bgimages]}, \textit{[fgimages]})}
 \end{algorithm}
 
 Fig.~\ref{fig:finaldataset} shows the three outcomes of the above algorithm for a set of images.
@@ -201,21 +245,22 @@ We used nyu.h5 model for depth calcualtion from Depth estimation proposed by~\ci
 This model requires input images to be of 448x448 resolution and produces 224x224 size depth image. 
 A set of sample depth images are shown in fig.~\ref{fig:finaldataset}.
 
-\begin{figure}[h]
-\centering
-\begin{tabular}{c}
-\subfloat[] {\includegraphics[scale=0.55]{overlay.jpg}}
-\end{tabular}
-\begin{tabular}{c}
-\subfloat[] {\includegraphics[scale=0.55]{overlaymask.jpg}}
-\end{tabular}
-\begin{tabular}{c}
-\subfloat[] {\includegraphics[scale=0.55]{overlaydepth.jpg}}
-\end{tabular}
-
-\caption{Three images resulted from the algorithm used. (a) A scene image on which a foreground object is positioned at random location with random scale, (b) respective mask for the scene image, and (c) calculated depth by using a model.}
-\label{fig:finaldataset}
-\end{figure}
+\begin{figure*}
+  \begin{center}
+  \begin{tabular}{@{}c@{}}
+      \includegraphics[width=0.8\linewidth]{overlay.jpg}
+  \end{tabular}
+  \begin{tabular}{@{}c@{}}
+      \includegraphics[width=0.8\linewidth]{overlaymask.jpg}
+  \end{tabular}
+  \begin{tabular}{@{}c@{}}
+      \includegraphics[width=0.8\linewidth]{overlaydepth.jpg}
+  \end{tabular}
+  \end{center}
+  \caption{Three images resulted from the algorithm used. (top) A scene image on which a foreground object is positioned
+   at random location with random scale, (middle) respective mask for the scene image, and (bottom) calculated depth by using a model.}
+  \label{fig:finaldataset}
+\end{figure*}
 
 \subsubsection{Directory Structure}
 
@@ -273,12 +318,12 @@ The Deep Convolutional Neural Networks encoder is fed with a image (224 X 224) a
 image and and second decoder outputs a depth image. To reduce overfitting\cite{perez2017effectiveness}, 
 this work employed Random Rotation, Random Grayscale, Color Jitter, random horizontal flips and random chaneel swaps for data augmentation.
 
-\begin{figure}[h!]
+\begin{figure*}
 \centering
-  \includegraphics[width=1\textwidth]{networkarchitecture.jpg}
+  \includegraphics[width=0.8\textwidth]{networkarchitecture.jpg}
   \caption{Network Architecture}
   \label{fig:modelarch}
-\end{figure}
+\end{figure*}
 
 The Loss is calculated with the help of L1 loss and Structural Similarity (SSIM) at both the decoders. 
 We have also employed regularization for weight penality.
@@ -315,59 +360,13 @@ L(y, \hat{y}) = 0.84 \ast L_{term1}(y, \hat{y}) + 0.16 \ast L_{term2}(y, \hat{y}
 
 \subsection{Evaluation}
 \subsection{Analysis}
-
-3. 
 \section{Conclusion}
 \section{Acknowledgement}
-This paper and the research behind it would not have been possible without the exceptional support and computing 
-facilities of my Institution, Vishnu Institute of Technology. Ackowledge TSAI and Google Colab as well here.
+This paper and the research behind it would not have been possible without the exceptional support and computing facilities of my Institution, Vishnu Institute of Technology. Mention TSAI
 
+{\small
+\bibliographystyle{ieee_fullname}
+\bibliography{references}
+}
 
-\begin{thebibliography}{10}
-\bibitem{abuolaim2020defocus} Abuolaim, Abdullah, and Michael S. Brown. "Defocus Deblurring Using Dual-Pixel Data." European Conference on Computer Vision. Springer, Cham, 2020.
-
-\bibitem{zhang2018deep} Zhang, Yinda, and Thomas Funkhouser. "Deep depth completion of a single rgb-d image." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2018.
-
-\bibitem{geiger2013vision} Geiger, Andreas, et al. "Vision meets robotics: The kitti dataset." The International Journal of Robotics Research 32.11 (2013): 1231-1237.
-
-\bibitem{ros2016synthia} Ros, German, et al. "The synthia dataset: A large collection of synthetic images for semantic segmentation of urban scenes." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.
-
-\bibitem{cordts2016cityscapes} Cordts, Marius, et al. "The cityscapes dataset for semantic urban scene understanding." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.
-
-\bibitem{mayer2016large} Mayer, Nikolaus, et al. "A large dataset to train convolutional networks for disparity, optical flow, and scene flow estimation." Proceedings of the IEEE conference on computer vision and pattern recognition. 2016.
-
-\bibitem{xian2018monocular} Xian, Ke, et al. "Monocular relative depth perception with web stereo data supervision." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2018.
-
-\bibitem{saxena2008make3d} Saxena, Ashutosh, Min Sun, and Andrew Y. Ng. "Make3D: Depth Perception from a Single Still Image." AAAI. Vol. 3. 2008.
-
-\bibitem{silberman2012indoor} Silberman, Nathan, et al. "Indoor segmentation and support inference from rgbd images." European conference on computer vision. Springer, Berlin, Heidelberg, 2012.
-
-\bibitem{marchand2015pose} Marchand, Eric, Hideaki Uchiyama, and Fabien Spindler. "Pose estimation for augmented reality: a hands-on survey." IEEE transactions on visualization and computer graphics 22.12 (2015): 2633-2651.
-
-\bibitem{alhashim2018high} Alhashim, Ibraheem, and Peter Wonka. "High quality monocular depth estimation via transfer learning." arXiv preprint arXiv:1812.11941 (2018).
-
-\bibitem{kim2021survey} Kim, Seong-heum, and Youngbae Hwang. "A Survey on Deep Learning Based Methods and Datasets for Monocular 3D Object Detection." Electronics 10.4 (2021): 517.
-
-
-\bibitem{li2018megadepth} Li, Zhengqi, and Noah Snavely. "Megadepth: Learning single-view depth prediction from internet photos." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2018.
-
-\bibitem{howat2014greenland} Howat, Ian M., A. Negrete, and Benjamin E. Smith. "The Greenland Ice Mapping Project (GIMP) land classification and surface elevation data sets." The Cryosphere 8.4 (2014): 1509-1518.
-
-\bibitem{drozdzal2016importance} Drozdzal, Michal, et al. "The importance of skip connections in biomedical image segmentation." Deep Learning and Data Labeling for Medical Applications. Springer, Cham, 2016. 179-187.
-
-\bibitem{zhou2019unet++} Zhou, Zongwei, et al. "Unet++: Redesigning skip connections to exploit multiscale features in image segmentation." IEEE transactions on medical imaging 39.6 (2019): 1856-1867.
-
-\bibitem{bottou2010large} Bottou, Léon. "Large-scale machine learning with stochastic gradient descent." Proceedings of COMPSTAT'2010. Physica-Verlag HD, 2010. 177-186.
-
-\bibitem{smith2018disciplined} Smith, Leslie N. "A disciplined approach to neural network hyper-parameters: Part 1--learning rate, batch size, momentum, and weight decay." arXiv preprint arXiv:1803.09820 (2018).
-
-\bibitem{perez2017effectiveness} Perez, Luis, and Jason Wang. "The effectiveness of data augmentation in image classification using deep learning." arXiv preprint arXiv:1712.04621 (2017).
-
-\bibitem{amza2012review} Amza, Catalin. "A review on neural network-based image segmentation techniques." De Montfort University, Mechanical and Manufacturing Engg., The Gateway Leicester, LE1 9BH, United Kingdom (2012): 1-23.
-
-\end{thebibliography}
-\end{document}
-\section{Conclusion}
-\section{Acknowledgement}
-This paper and the research behind it would not have been possible without the exceptional support and computing facilities of my Institution, Vishnu Institute of Technology.
 \end{document}
