@@ -82,13 +82,15 @@ Expand the abstract with appropriate references. We need references for:
 4. Generating data sets is cumbersome
 5. Ours is novel work that uses few images to generate huge dataset that generalizes well
 %Above From Abhinav
-Depth information and Image segmentation are highly correlated~\cite{lin2018joint} and both are equally important in challenging applications which involve identification of objects as well as their distance from the camera and 3D reconstruction. Few of these applications are Robotics, Autonomous navigation.
+%Depth information and Image segmentation are highly correlated and both are equally 
+%important in challenging applications which involve identification of objects as well as their distance 
+%from the camera and 3D reconstruction..
 % need for depth estimation and segmentation (some application references). 
 % How deep learning require large datasets to learn - challenges with that
 % What kind of datasets are generated for this application
 % Generating data sets is cumbersome, what are some of the current ways. Many doing depth or only segmentation, 
 % however depth along with mask for desired foreground objects is forst of kind
-Depth estimation and semantic segmentation are often used together in many vision tasks like 
+Depth estimation and semantic segmentation are often used together in many vision tasks~\cite{lin2018joint} like 
 autonomous navitation of agents, augmented reality, self driving cars and other robotics applications. In all these application,
 identification of desired objects precisely in the scene and its depth estimate from the camera are crucial for safe and effective
 navigation. Modern RGB-D sensors like OAK-D are capable of simultaneously running advanced neural networks while providing depth 
@@ -103,31 +105,19 @@ This paper introduces SmallDepthMask,
 a way to curate custom dataset containing millions of images by multiplexing desired foreground objects over representative background 
 scenes, while also generating corresponding depth and foreground mask images. This significantly reduces the cost and time overheads.
 The authors also experiment by creating baseline models for several application contexts and show that the generated data
-successfully generalizes to detect relevant objcts in real scenes.
+successfully generalizes to detect relevant objcts in real scenes. Multiplexing, combined with random cropping, scaling 
+and translation, make the datageneration fast and effective. With only 100 pair of background and foregroung images, the authors
+generate 4 million image triplets and effectively leverage existing SOTA models for depth estimation and semantic segmentation.
 
-
-
-desired created from few images by leveraging existing, 
-accurate models and tools. This is an RGB-DM dataset that pair images with depth and segmentation mask. The datasets which involve depth cannot be 
-created using crowd source annotation, instead they rely on 3D range sensors. SmallDepthMask is experimentally created with the help of existing 
-depth predictors and foreground creators.
-
-A depth image is an image channel in which each pixel relates to a distance between the image plane and the corresponding object in the RGB image.
-Monocular depth gives information about depth and distance and the Monocular Depth Estimation is the task of estimating scene depth 
-using a single image\cite{abuolaim2020defocus}. 
-Image Segmentation is the process of partitioning an image into multiple segements and it can be used for locating objects, boundaries~\cite{amza2012review}. 
-RGBD image is a combination of a RGB image and its corresponding depth image\cite{zhang2018deep}.
- Depth information is integral to many problems in
-robotics, including mapping, localization and obstacle avoidance for terrestrial and aerial vehicles, autonomous navigation, and in computer vision,
- including augmented and virtual reality\cite{marchand2015pose}. RGBD datasets usually collected using depth sensors, monocular cameras, 
- LiDAR scanners which are expensive and data collection is a time consuming job. The wellknown datasets for monocular 3D object detection 
- are Context-Aware MixEd ReAlity (CAMERA), Objectron, Kitty3D, Cityscape3D, Synthia, etc.~\cite{} and these datasets have 
- limitations like indoor only images, small number of training examples, sparse sampling. To address the issues usage of 
- expensive devices and small number of training examples, this paper proposes a technique to come up with a custom dataset 
- by using existing accurate depth predictor models, like High Quality Monocular Depth Estimation via Transfer Learning(nyu.h5)~\cite{alhashim2018high}. 
- 
-
-Figure \ref{fig:sampledatarecord} represents a few representative examples from MoDES dataset.
+The main contributions of this paper are the following:
+\begin{enumerate}
+\item A novel effort to mix and match foreground and background images reducing the need for complex scene generation for data curation.
+\item Curate large dataset to effectively train models for custom application from a limited input of ready available internet images.
+\item Combine image, depthmap and forground mask in a single dataset using current SOTA models for depth estimation and semantic segmentation.
+\item To release curated dataset and the trained models making them publicly available. Researchers can use this single dataset to do segmentation, 
+train models to predict depth, or to predict both depth and mask.
+\end{enumerate}
+  
 
 \begin{figure*}
   \begin{center}
@@ -137,23 +127,45 @@ Figure \ref{fig:sampledatarecord} represents a few representative examples from 
   \label{fig:sampledatarecord}
 \end{figure*}
 
-The most important feature of \textit{SmallDepthMask} are -  It is an outcome of limited input. Every record in the 
-dataset contains Background image, a background image on which a foreground image is overlay at random location, 
-its respective segmentation mask, and dense depth image. Researchers can use this single dataset to do segmentation, 
-train models to predict depth, or to predict both depth and mask. 
+Figure \ref{fig:sampledatarecord} represents a few representative examples of a dataset to help detect cattle on road,
+ which is very common on Indian roads, leading to several accidents involving loss of life and property. 
+ The generated datasets and the trained models are publicly available.
 
-The main contributions of this paper are the following:
-\begin{enumerate}
-\item An approach to create larger datasets from the existing resources.
-\item Building and releasing a custom dataset for Monocular Depth Estimation and Segmentation specific to cattle.
-\item Linking this dataset to a model.
-\item The dataset and the trained models are publicly available.
-\end{enumerate}
 
-A para on the organization of the paper.......................................
+%The datasets which involve depth cannot be 
+%created using crowd source annotation, instead they rely on 3D range sensors. SmallDepthMask is experimentally created 
+%with the help of existing depth predictors and foreground creators.
+
+
+
+%A para on the organization of the paper.......................................
 
 
 \section {Related Work}
+
+A depth image is an image channel in which each pixel relates to a distance between the image plane and the
+corresponding object in the RGB image.
+Monocular depth gives information about depth and distance and the Monocular Depth Estimation is the task of estimating scene depth 
+using a single image\cite{abuolaim2020defocus}. 
+Image Segmentation is the process of partitioning an image into multiple segements and it can be used for locating objects, 
+boundaries~\cite{amza2012review}. RGBD image is a combination of a RGB image and its corresponding depth image\cite{zhang2018deep}.
+ 
+Depth information is integral to many problems in
+robotics including mapping, localization and obstacle avoidance for terrestrial and aerial vehicles, autonomous navigation, 
+and in computer vision, including augmented and virtual reality\cite{marchand2015pose}. RGBD datasets usually collected 
+using depth sensors, monocular cameras and LiDAR scanners are expensive and data collection is a time consuming job. 
+The wellknown datasets for monocular 3D object detection are Context-Aware MixEd ReAlity (CAMERA), Objectron, 
+Kitty3D, Cityscape3D, Synthia, etc.~\cite{} and these datasets have 
+ limitations like indoor only images, small number of training examples, sparse sampling. 
+ 
+ To address the issues usage of 
+ expensive devices and small number of training examples, this paper proposes a technique to come up with a custom dataset 
+ by using existing accurate depth predictor models, like High Quality Monocular Depth Estimation 
+ via Transfer Learning(nyu.h5)~\cite{alhashim2018high}. 
+ 
+
+
+
 We can include detailed study of related work here while in intro only mention few points with references. Same referencnes can be elaborated here. 
 % Above from Abhinav
 A variety of RGBD datasets in which images are paired with corresponding depth maps(D) have been proposed through the years.
