@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex depthpredict"] 1616163417 "depthpredict.aux" "depthpredict.bbl" "depthpredict" 1616163419
+["bibtex depthpredict"] 1616164078 "depthpredict.aux" "depthpredict.bbl" "depthpredict" 1616164080
   "./ieee_fullname.bst" 1589819726 19905 72b73f4cb1c51eaa1a7af8ecad2b6bfb ""
-  "depthpredict.aux" 1616163418 8059 2d82e803a6d7661de4ecafe717b22972 "pdflatex"
+  "depthpredict.aux" 1616164080 8168 8cc92a4b35a9a1889d7266b321c8a731 "pdflatex"
   "references.bib" 1616161884 7239 796779c26645b0d3401c3ee62e9f7827 ""
   (generated)
-  "depthpredict.bbl"
   "depthpredict.blg"
-["pdflatex"] 1616163417 "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex" "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.pdf" "depthpredict" 1616163419
+  "depthpredict.bbl"
+["pdflatex"] 1616164079 "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex" "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.pdf" "depthpredict" 1616164080
   "C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
   "C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136765053 960 379cc0019370a9e0208a0a3f949f847a ""
   "C:/Program Files/MiKTeX 2.9/fonts/tfm/adobe/courier/pcrr8r.tfm" 1136765053 1292 bd42be2f344128bff6d35d98474adfe3 ""
@@ -112,13 +112,13 @@
   "C:/Users/abhinav/AppData/Roaming/MiKTeX/2.9/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "bgimages.jpg" 1616059698 23634 32713a8a3dfe2f87b6ffff08b04a2c52 ""
   "cvpr.cls" 1616152178 20566 94fe0374a1aefb79e6d48d815a6f6901 ""
-  "depthpredict.aux" 1616163418 8059 2d82e803a6d7661de4ecafe717b22972 "pdflatex"
-  "depthpredict.bbl" 1616163417 5415 52b7f350fb7a91d5d35b417971f12bcd "bibtex depthpredict"
-  "depthpredict.brf" 1616163418 1369 402d2ab6e481b647d969bb661aebc0fe "pdflatex"
-  "depthpredict.tex" 1616163414 23383 e52f8c2e120fe6bc736965ef1b08ae2d ""
+  "depthpredict.aux" 1616164080 8168 8cc92a4b35a9a1889d7266b321c8a731 "pdflatex"
+  "depthpredict.bbl" 1616164078 5415 52b7f350fb7a91d5d35b417971f12bcd "bibtex depthpredict"
+  "depthpredict.brf" 1616164080 1369 82e680c055995c9695d64d3135c5db4d "pdflatex"
+  "depthpredict.tex" 1616164075 23181 6308b03c1853bbcbe23fb2abff873e57 ""
   "fgimages.jpg" 1616059698 18274 5e9b00177e7a6c57d7213b5a64db2613 ""
-  "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.aux" 1616163418 8059 2d82e803a6d7661de4ecafe717b22972 ""
-  "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex" 1616163414 23383 e52f8c2e120fe6bc736965ef1b08ae2d ""
+  "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.aux" 1616164080 8168 8cc92a4b35a9a1889d7266b321c8a731 ""
+  "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex" 1616164075 23181 6308b03c1853bbcbe23fb2abff873e57 ""
   "networkarchitecture.jpg" 1616059698 55671 aa7abf4677739c681ae6a032dad50ef2 ""
   "overlay.jpg" 1616059698 24160 5a6553f3451cc7ae9f915debe192b7fe ""
   "overlaydepth.jpg" 1616059698 16791 b6ae591268840898932b2ea369127749 ""
@@ -126,8 +126,8 @@
   "samplerecord.png" 1616059698 117939 66760f5304a7698b63381976f53b3b89 ""
   (generated)
   "depthpredict.brf"
-  "depthpredict.aux"
   "depthpredict.log"
+  "depthpredict.aux"
+  "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.pdf"
   "depthpredict.pdf"
   "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.log"
-  "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.pdf"

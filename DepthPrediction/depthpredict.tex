@@ -112,7 +112,7 @@ generate 4 million image triplets and effectively leverage existing SOTA models 
 The main contributions of this paper are the following:
 \begin{enumerate}
 \item A novel effort to mix and match foreground and background images reducing the need for complex scene generation for data curation.
-\item Curate large dataset to effectively train models for custom application from a limited input of ready available internet images.
+\item Curate large dataset to effectively train models for custom applications of detecting depth and mask for specific foreground objects over any target background, from a limited input of ready available internet images.
 \item Combine image, depthmap and forground mask in a single dataset using current SOTA models for depth estimation and semantic segmentation.
 \item To release curated dataset and the trained models making them publicly available. Researchers can use this single dataset to do segmentation, 
 train models to predict depth, or to predict both depth and mask.
@@ -156,20 +156,14 @@ and in computer vision, including augmented and virtual reality\cite{marchand201
 using depth sensors, monocular cameras and LiDAR scanners are expensive and data collection is a time consuming job. 
 The wellknown datasets for monocular 3D object detection are Context-Aware MixEd ReAlity (CAMERA), Objectron, 
 Kitty3D, Cityscape3D, Synthia, etc.~\cite{} and these datasets have 
- limitations like indoor only images, small number of training examples, sparse sampling. 
+ limitations like indoor only images, small number of training examples and sparse sampling. 
  
- To address the issues usage of 
- expensive devices and small number of training examples, this paper proposes a technique to come up with a custom dataset 
- by using existing accurate depth predictor models, like High Quality Monocular Depth Estimation 
+ To address the issues usage of expensive devices and small number of training examples, this paper proposes a 
+ technique to come up with a custom dataset by using existing accurate depth predictor models, like High Quality Monocular Depth Estimation 
  via Transfer Learning(nyu.h5)~\cite{alhashim2018high}. 
- 
 
-
-
-We can include detailed study of related work here while in intro only mention few points with references. Same referencnes can be elaborated here. 
-% Above from Abhinav
 A variety of RGBD datasets in which images are paired with corresponding depth maps(D) have been proposed through the years.
-Some of the RGBD datasets which are used mostly are Kitti dataset~\cite{geiger2013vision}, the Synthia dataset~\cite{ros2016synthia}, 
+Some of the frequenlty used RGBD datasets are the Kitti dataset~\cite{geiger2013vision}, the Synthia dataset~\cite{ros2016synthia}, 
 Make3D dataset~\cite{saxena2008make3d}, NYU dataset~\cite{silberman2012indoor}
 
 The dataset Kiiti~\cite{geiger2013vision} is the well known RGB-D dataset collected using a vehicle equipped with a sparse 
@@ -179,33 +173,35 @@ Synthia~\cite{ros2016synthia} is a street scene dataset with depth maps of synth
 requiring domain adaptiation to apply to 
 real world settings. Cityscapes~\cite{cordts2016cityscapes} provides a dataset of street scenes, 
 albeit with more diversity than KITTI. 
-Sintel~\cite{mayer2016large} is another synthetic dataset which mainly comprises of outdoors sences. 
+Sintel~\cite{mayer2016large} is another synthetic dataset which mainly comprises of outdoors sences.
+
 Megadepth~\cite{li2018megadepth} is a large-scale dataset of outdoor images collected from internet, with depth maps reconstructed 
 using structure-from-motion techniques, but this dataset lacks in ground truth depth and scale. The RedWeb~\cite{xian2018monocular}
 dataset provide depth maps generated from stereo images which are freely available in large-scale data platforms such as Flicker. 
 The datasets MegaDepth and RedWeb can be easily computed with the existing MVS methods.
+
 Make3D~\cite{saxena2008make3d} provides RGB and depth information for outdoor scenes. 
 The NYUv2 dataset~\cite{silberman2012indoor} is widely used for monocular depth estimation in indoor environments. 
 The data was collected with a Kinect RGBD camera, which provides sparse and noisy depth returns. 
-These returns are generally in- painted and smoothed before they are used for monocular depth estimation tasks. 
+These returns are generally in-painted and smoothed before they are used for monocular depth estimation tasks. 
 As a result, while the dataset includes sufficient samples to train modern machine learning pipelines,
 the “ground-truth” depth does not necessarily correspond to true scene depth.
 
-Most of the existing datasets consists of indoor images, or outdoor images of city streets. 
-There is no specific dataset which contains the animals which freely roam on roads without considering any traffic rules.
-With an intention identify and recognize these animals, authors have come up with a dataset. 
-Most of the datasets, except Megadepth were collected using cameras or sensors. 
-Motivated from MegaDepth, our work curates a dataset of Animals, which are majority found on the roads, by using few cow, 
-calf, buffalo images and few background images.
+Most of the existing datasets consists of indoor images, or outdoor images of city streets. For every specific application, like
+detecting animals roaming on roads for self driving or assisted driving cars, or people inside a room for autonomus room cleaners etc.
+researchers need to curate specific dataset to train relevant deep learning models. The present work makes the task of 
+curating dtaset extremely simple and cost effective.
 
 \section{Dataset Generation Method}
-we designed the dataset with the following objectives...
+The curated dataset must have following objectives:
 \begin{enumerate}
-\item dataset which dedicatedly include foreground object. 
+\item dataset which dedicatedly includes foreground object. 
 \item dataset should drive deep learning models and generalize. 
 \item dataset should provide accurate dense depth maps.
-\item dataset should provide foreground images
+\item dataset should provide foreground mask
 \end{enumerate}
+
+\section{Method}
 
 \subsection{Data Acquisition}
 The Related work says that the depth measurement took place with variety of devices like kinects, structure light cameras, and LiDAR etc. 
