@@ -16,12 +16,13 @@
 \maketitle
 
 \begin{abstract}
-Segmentation of desired object along with depth estimation is useful in various challenges like robotics, autonomous navigation. 
+Segmentation of the desired object along with depth estimation is useful in various applications like robotics and autonomous navigation. 
 Any deep learning workflow to segment the desired foreground object in a scene require significant training data.
 The data generation process usually involve expensive hardware like RGB-D sensors, Laser Scanners or significant manual involvement. 
-This paper presents a novel way to utilize only a small number of readily available png images with transparency for the foreground object, and representative
-background images from the internet and combine them to generate a huge dataset for deep learning
-utilizing current state of the art monocular depth estimation techniques. Few example applications show the efficacy of the training data on detecting 
+This paper presents a novel way to utilize only a small number of readily available png images with transparency for the foreground object, 
+and representative background images from the internet and combine them to generate a huge dataset for deep learning
+utilizing current state of the art monocular depth estimation and segmentation techniques. 
+Few example applications show the efficacy of the training data on detecting 
 cattle on road for autonomous driving application, etc. The baseline models exhibit strong generalization to real scenarios.
 % below is what we wrote previously
 
@@ -39,8 +40,16 @@ Expand the abstract with appropriate references. We need references for:
 5. Ours is novel work that uses few images to generate huge dataset that generalizes well
 %Above From Abhinav
 
+% need for depth estimation and segmentation (some application references). 
+% How deep learning require large datasets to learn - challenges with that
+% What kind of datasets are generated for this application
+% Generating data sets is cumbersome, what are some of the current ways. Many doing depth or only segmentation, 
+% however depth along with mask for desired foreground objects is forst of kind
 
-A depth image is an image channel in which each pixel relates to a distance between the image plane and the corresponding object in the RGB image. Monocular depth gives information about depth and distance and the Monocular Depth Estimation is the task of estimating scene depth using a single image\cite{abuolaim2020defocus}. 
+
+A depth image is an image channel in which each pixel relates to a distance between the image plane and the corresponding object in the RGB image.
+Monocular depth gives information about depth and distance and the Monocular Depth Estimation is the task of estimating scene depth 
+using a single image\cite{abuolaim2020defocus}. 
 Image Segmentation is the process of partitioning an image into multiple segements and it can be used for locating objects, boundaries~\cite{amza2012review}. 
 RGBD image is a combination of a RGB image and its corresponding depth image\cite{zhang2018deep}.
  Depth information is integral to many problems in
