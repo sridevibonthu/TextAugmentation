@@ -75,12 +75,12 @@ Bhimavaram, AP, India 534202\\
 
 %%%%%%%%% BODY TEXT
 \section{Introduction}
-Expand the abstract with appropriate references. We need references for:
-1. Monocular Depth
-2. Image segmentation
-3. Deep learning requiring large datasets
-4. Generating data sets is cumbersome
-5. Ours is novel work that uses few images to generate huge dataset that generalizes well
+%Expand the abstract with appropriate references. We need references for:
+%1. Monocular Depth
+%2. Image segmentation
+%3. Deep learning requiring large datasets
+%4. Generating data sets is cumbersome
+%5. Ours is novel work that uses few images to generate huge dataset that generalizes well
 %Above From Abhinav
 %Depth information and Image segmentation are highly correlated and both are equally 
 %important in challenging applications which involve identification of objects as well as their distance 
@@ -192,7 +192,7 @@ detecting animals roaming on roads for self driving or assisted driving cars, or
 researchers need to curate specific dataset to train relevant deep learning models. The present work makes the task of 
 curating dtaset extremely simple and cost effective.
 
-\section{Dataset Generation Method}
+\section{Method}
 The curated dataset must have following objectives:
 \begin{enumerate}
 \item dataset which dedicatedly includes foreground object. 
@@ -201,9 +201,6 @@ The curated dataset must have following objectives:
 \item dataset should provide foreground mask
 \item dataset can be stored offline or generated online during training phase dynamically
 \end{enumerate}
-
-\section{Method}
-
 
 \subsection{Data Acquisition}
 The first step to curate data is to determine a target application scenario and thus determine the foreground object(s) and the
@@ -283,30 +280,31 @@ For $k=20$ and $n=m=100$ this becomes $400,000$ fg-bg images. Algorithm \ref{alg
 
 
 
-\subsection{Data Curation and Processing}
-% this may not be required
+% \subsection{Data Curation and Processing}
+% % this may not be required
 
-Fig.~\ref{fig:finaldataset} shows the three outcomes of the above algorithm for a set of images.
+% Fig.~\ref{fig:finaldataset} shows the three outcomes of the above algorithm for a set of images.
 
-\subsubsection{fg\_bg images}
-To generate fg\_bg images, the foreground image is overlaid on background images randomly for 20 times. 
-To place a foreground image on the background, a center point(x, y) in the range of 0 to 447 is randomly picked,
- and a scale between 0.3 to 0.6, which identifies the area overlaped by foreground image on the background image is also randomly picked. 
- Next the foreground image is scaled and placed on top of background image centered at (x, y). 
- Save this overlaid image with $224 \times 224$ resolution.   
- As the number of foreground images are 200, the total number of overlaid images per background becomes 4000. 
- By repeating the same procedure for all the 100 background images, the total number of fg on bg images becomes 400000. 
- A set of sample images after overlaying foreground on background are shown in Fig. 
+% \subsubsection{fg\_bg images}
+% To generate fg\_bg images, the foreground image is overlaid on background images randomly for 20 times. 
+% To place a foreground image on the background, a center point(x, y) in the range of 0 to 447 is randomly picked,
+%  and a scale between 0.3 to 0.6, which identifies the area overlaped by foreground image on the background image is also randomly picked. 
+%  Next the foreground image is scaled and placed on top of background image centered at (x, y). 
+%  Save this overlaid image with $224 \times 224$ resolution.   
+%  As the number of foreground images are 200, the total number of overlaid images per background becomes 4000. 
+%  By repeating the same procedure for all the 100 background images, the total number of fg on bg images becomes 400000. 
+%  A set of sample images after overlaying foreground on background are shown in Fig. 
 
-\subsubsection{masks of fg\_bg images}
-The mask is calculated for every fg\_bg image by setting a binary image to transparency channel of foreground image. 
-These 400000 images are also stored in the particular folder of the dataset and a set of sample masks of fg on bg images are shown in Fig.  
+% \subsubsection{masks of fg\_bg images}
+% The mask is calculated for every fg\_bg image by setting a binary image to transparency channel of foreground image. 
+% These 400000 images are also stored in the particular folder of the dataset and a set of sample masks of fg on bg images are shown in Fig.  
 
-\subsubsection{depth maps of fg\_bg images}
-We used nyu.h5 model for depth calcualtion from Depth estimation proposed by~\cite{alhashim2018high}. 
-This model requires input images to be of 448x448 resolution and produces 224x224 size depth image. 
-A set of sample depth images are shown in fig.~\ref{fig:finaldataset}.
+% \subsubsection{depth maps of fg\_bg images}
+% We used nyu.h5 model for depth calcualtion from Depth estimation proposed by~\cite{alhashim2018high}. 
+% This model requires input images to be of 448x448 resolution and produces 224x224 size depth image. 
+% A set of sample depth images are shown in fig.~\ref{fig:finaldataset}.
 
+% MOVE THIS TO TOP
 \begin{figure*}
   \begin{center}
   \begin{tabular}{@{}c@{}}
@@ -324,7 +322,13 @@ A set of sample depth images are shown in fig.~\ref{fig:finaldataset}.
   \label{fig:finaldataset}
 \end{figure*}
 
-\subsubsection{Directory Structure}
+%\subsubsection{Directory Structure}
+\subsection{Using Segmentation for Adaptive Scaling and Occlusion}
+% put the adaptive scaling work.
+First show images with wrong scale and how adaptive scaling produces better results. Discuss algo for adaptive Scaling
+Then discuss occlusion detection
+MENTION that for each application this has to be expreimentally done and this is not an automated process.
+However in out baseline model we used randomly scaled data only.
 
 \section{Example Applications}
 \subsection{Detecting cattle on roads}
