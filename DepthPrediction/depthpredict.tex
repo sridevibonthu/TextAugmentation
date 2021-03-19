@@ -199,21 +199,79 @@ The curated dataset must have following objectives:
 \item dataset should drive deep learning models and generalize. 
 \item dataset should provide accurate dense depth maps.
 \item dataset should provide foreground mask
+\item dataset can be stored offline or generated online during training phase dynamically
 \end{enumerate}
 
 \section{Method}
 
+
 \subsection{Data Acquisition}
-The Related work says that the depth measurement took place with variety of devices like kinects, structure light cameras, and LiDAR etc. 
-This work mainly focusing on the generation of huge dataset with limited availability of scene images and foreground images. 
+The first step to curate data is to determine a target application scenario and thus determine the foreground object(s) and the
+representative background context. At the same time the dataset must have sufficient variability to include majority of
+the types and views that the trained deep network may see when deployed.
+
+We propose to download or take RGB image of $n$ foreground object(s) and $m$ background images (we used $n=m=100$)
+balancing the types and views. For example, for cattle on roads dataset, we shose several cow, bull and calf types, individual
+ or in group, sitting, standing or walking, and from various angles. Similarly for background, we chose backgrounds of streets, 
+ storefronts, main roads, highways, markets, railway tracks, landscapes, garbage piles etc.
+PNG images with transparency are readily available on the internet for almost any desired foreground object.
+Such images will easily allow to generate foreground mask from non-transparent pixels. If not, tools like GIMP~\cite{howat2014greenland}, 
+combined with deep learning forground extractors (Authors used remove.bg~\cite{website reference} that uses a combination of Image based techniques 
+and DNN to separate foreground from background) can help generate the required PNG foreground images.
+
+% ADD FIGURES for cattle as an example to show sample foreground and background images
+
+\subsection{Multiplexing and Depth Generation}
+
+This step is to place each foreground object on to several background images generating a fg-bg image and the corresponding mask
+corresponding to the foreground placement and scale. Depth is computed from the fg-bg image via the model proposed by 
+Ibraheem Alhashim et al. in their paper titled "High Quality Monocular Depth Estimation via Transfer Learning"
+~\cite{alhashim2018high}\footnote{source code for depth estimation model: https://github.com/ialhashim/DenseDepth/blob/master/DenseDepth.ipynb}. 
+This model takes $448\times448$ size images as input, hence we resize all backfround images to this size while maintaining their aspect ratio.
+
+The data generation process is completely online and produces one batch of images for training a deep model.
+By repeating one forground object $k$ times for each background image and repeating another $k$ times with horizontally
+flipped version of the same foreground, one can generate $2kmn$ fg-bg images. 
+For $k=20$ and $n=m=100$ this becomes $400,000$ fg-bg images. Algorithm \ref{algo:datagen} descrbes the data generation process
+
+\IncMargin{1em}
+\begin{algorithm*}
+  \label{algo:datagen}
+  \SetKwData{Left}{left}\SetKwData{This}{this}\SetKwData{Up}{up}
+  \SetKwFunction{Union}{Union}\SetKwFunction{FindCompress}{FindCompress}
+  \SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+  \Input{$m$ Background Image paths, $n$ Foreground Image paths, multiplexing factor $k$, batch size $b$ \emph{must be multiple of $k$}}
+  \Output{Yield $2kmn$ fg-bg, mask and depth images in batches of size $b$}
+  \BlankLine
+  \emph{for offline use it creates 3 folders with fg\_bg, mask and depth each having $2kmn$ images}\;
+
+  \For{$bg\leftarrow 1$ \KwTo $m$}{
+    \For{$fg\leftarrow 1$ \KwTo $n$}{
+      \For{$i\leftarrow 1$ \KwTo $k$}{
+        $croppedbg\leftarrow$ take maximal random crop of $448\times448$ from $bg$ without affecting the aspect ratio\;
+        randomly pick a center point $(x, y)$ in range $[0,447]$\;
+     	  randomly pick a scale in range $[0.3, 0.6]$ (ratio of area $fg$ covers $bg$)\;
+     	  create $fg-bg$ image by resizing the $fg$ to scale and place it on top of $croppedbg$ centered at $x, y$ calculated\;
+        calculate binary mask from current placement of $fg$ by thresholding transparency channel.
+        save $fg-bg$ image and mask
+        add $fg-bg$ image to a batch\;
+    }
+    \If{$b$ new fg-bg images generated}{
+      run depth model on batch and save corresponding depth images
+    }
+    }}
+\caption{Generate Dataset(\textit{[bgimages]}, \textit{[fgimages]}, $k$, $b$)}
+\end{algorithm*}
+
+
+
+%The Related work says that the depth measurement took place with variety of devices like kinects, structure light cameras, and LiDAR etc. 
+%This work mainly focusing on the generation of huge dataset with limited availability of scene images and foreground images. 
 This work generates transparent foreground images and masks using GIMP~\cite{howat2014greenland} software and 
-depth maps by using the model proposed by Ibraheem Alhashim et al. in their paper titled "High Quality Monocular Depth Estimation 
-via Transfer Learning"~\cite{alhashim2018high} and the source code is available 
-at \footnote{https://github.com/ialhashim/DenseDepth/blob/master/DenseDepth.ipynb}. 
+depth maps by using 
 The main source images for the dataset are 100 scene images, and 100 images of objects. 
-We are referring scene images here as background images. 
-They consists of the locations where cattles usually move, like streets, main roads, front view of shops, markets, 
-railway tracks, landscapes etc. A maximal random crop of $448 X 448$ without affecting the image aspect is done on 
+
+A maximal random crop of $448 X 448$ without affecting the image aspect is done on 
 background images. The object picked for this custom dataset creation is stray animals (mostly cows/bull/calf etc.). 
 We have taken care to include single animals, group of animals, front, back and side poses of animals, 
 all age group animals, and many coloured cows. 
@@ -241,26 +299,6 @@ foreground images.
 To create the main dataset of 400K images, we used the selected 100 background images and the 200 foreground images. 
 The entire procedure followed to create the dataset is represented in the form of algorithm. 
 
-\IncMargin{1em}
-\begin{algorithm}
-\SetAlgoLined
-\KwResult{creates 3 folders with fg\_bg, mask and depth each having 400K images} 
-bg\_count := \textit{length(bg\_images list)} \;
-fg\_count := \textit{length(fg\_images list)} \;
-  \For{$i\leftarrow 1$ \KwTo $bg\_count$}{
-    \For{$i\leftarrow 1$ \KwTo $fg\_count$}{
-      \For{$i\leftarrow 1$ \KwTo $20$}{
-        randomly pick a center point (x, y)\;
-     	randomly pick a scale\;
-     	Place foreground on background by using scale and (x, y)\;
-		calculate mask\;
-    }
-    }
-	 \tcp*{Overlaying of all foreground images on a single background image is completed. }	    
-    run depth model on 4K images
-      }
-\caption{Generate Dataset(\textit{[bgimages]}, \textit{[fgimages]})}
-\end{algorithm}
 
 Fig.~\ref{fig:finaldataset} shows the three outcomes of the above algorithm for a set of images.
 

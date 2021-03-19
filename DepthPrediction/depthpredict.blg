@@ -1,3 +1,8 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: depthpredict.aux
+White space in argument---line 41 of file depthpredict.aux
+ : \citation{website
+ :                   reference}
+I'm skipping whatever remains of this command
 The style file: ieee_fullname.bst
 Database file #1: references.bib
+(There was 1 error message)
