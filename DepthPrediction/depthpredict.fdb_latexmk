@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1616069938 "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex" "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.pdf" "depthpredict" 1616069938
+["pdflatex"] 1616070510 "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex" "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.pdf" "depthpredict" 1616070510
   "C:/Program Files/MiKTeX 2.9/fonts/tfm/public/cm/cmbx10.tfm" 1136765053 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "C:/Program Files/MiKTeX 2.9/fonts/tfm/public/cm/cmbx12.tfm" 1136765053 1324 c910af8c371558dc20f2d7822f66fe64 ""
   "C:/Program Files/MiKTeX 2.9/fonts/tfm/public/cm/cmbx9.tfm" 1136765053 1328 5442e22a7072966dbaf88ca900acf3f0 ""
@@ -72,11 +72,11 @@
   "C:/Users/abhinav/AppData/Roaming/MiKTeX/2.9/tex/latex/relsize/relsize.sty" 1365244030 15542 c4cc3164fe24f2f2fbb06eb71b1da4c4 ""
   "bgimages.jpg" 1616059698 23634 32713a8a3dfe2f87b6ffff08b04a2c52 ""
   "depthpredict.aux" 0 -1 0 "pdflatex"
-  "depthpredict.tex" 1616069929 23913 d24eac8d6e4f1c544db8f0e9183b9ded ""
+  "depthpredict.tex" 1616070507 23918 1a1a4688aaa032312f367feacc122b59 ""
   "fgimages.jpg" 1616059698 18274 5e9b00177e7a6c57d7213b5a64db2613 ""
   "finalepoch.png" 1616059698 858500 419436703c67e9b4436038c34d8d400d ""
-  "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.aux" 1616069938 9 a94a2480d3289e625eea47cd1b285758 ""
-  "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex" 1616069929 23913 d24eac8d6e4f1c544db8f0e9183b9ded ""
+  "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.aux" 1616070510 9 a94a2480d3289e625eea47cd1b285758 ""
+  "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.tex" 1616070507 23918 1a1a4688aaa032312f367feacc122b59 ""
   "h:/DataScience/modes/TextAugmentation/DepthPrediction/overlaymask.jpg" 0 -1 0 ""
   "networkarchitecture.jpg" 1616059698 55671 aa7abf4677739c681ae6a032dad50ef2 ""
   "overlay.jpg" 1616059698 24160 5a6553f3451cc7ae9f915debe192b7fe ""
@@ -87,6 +87,6 @@
   (generated)
   "depthpredict.pdf"
   "depthpredict.aux"
-  "depthpredict.log"
   "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.log"
   "h:/DataScience/modes/TextAugmentation/DepthPrediction/depthpredict.pdf"
+  "depthpredict.log"
