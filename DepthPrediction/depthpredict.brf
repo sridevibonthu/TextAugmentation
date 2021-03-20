@@ -1,4 +1,6 @@
 \backcite {lin2018joint}{{1}{1}{section.1}}
+\backcite {ros2016synthia}{{1}{1}{section.1}}
+\backcite {li2018megadepth}{{1}{1}{section.1}}
 \backcite {abuolaim2020defocus}{{2}{2}{section.2}}
 \backcite {amza2012review}{{2}{2}{section.2}}
 \backcite {zhang2018deep}{{2}{2}{section.2}}
@@ -24,5 +26,5 @@
 \backcite {bottou2010large}{{3}{4.1}{subsection.4.1}}
 \backcite {smith2018disciplined}{{3}{4.1}{subsection.4.1}}
 \backcite {perez2017effectiveness}{{3}{4.1}{subsection.4.1}}
-\backcite {jadon2020survey}{{3}{4.2}{subsection.4.2}}
+\backcite {jadon2020survey}{{4}{4.2}{subsection.4.2}}
 \backcite {zhao2015loss}{{4}{4.2}{subsection.4.2}}
