@@ -257,7 +257,7 @@ For $k=20$ and $n=m=100$ this becomes $400,000$ fg-bg images. Algorithm \ref{alg
         randomly pick a center point $(x, y)$ in range $[0,447]$\;
      	  randomly pick a scale in range $[0.3, 0.6]$ (ratio of area $fg$ covers $bg$)\;
      	  create $fg-bg$ image by resizing the $fg$ to scale and place it on top of $croppedbg$ centered at $x, y$ calculated\;
-        calculate binary mask from current placement of $fg$ by thresholding transparency channel.
+        calculate binary mask from current placement of $fg$ by thresholding the transparency channel.
         save $fg-bg$ image and mask
         add $fg-bg$ image to a batch\;
     }
@@ -308,25 +308,13 @@ For $k=20$ and $n=m=100$ this becomes $400,000$ fg-bg images. Algorithm \ref{alg
   \label{fig:finaldataset}
 \end{figure*}
 
-\section{Experiments}
+\section{Experimental Analysis}
 In this section, we provide a baseline for monocular depth estimation and foreground segmentation on the \textit{SmallDepthMask} dataset.
 Convolutional Neural Networks(CNN) are progressive in exploring structural features and spatial image formation. 
 To come up with baseline, we started  training simple CNN, Resnet, and Unet++. 
 The state-of-the-art models for image segmentation are variants of U-Net and fully convolutional networks (FCN)\cite{drozdzal2016importance}. 
 long skip connections are used to skip features from the contracting path to the expanding path in order to recover 
 spatial information lost during downsampling \cite{zhou2019unet++}. Short skip connections can be used to build deep FCNs. 
-
-\subsection{Detecting Cattle on Road}
-
-DISCUSS WHY? NEED FOR THIS APPLICaTION HERE...
-
-Previous sections desribe as an example the dataset generation for this application. The dataset is available for public use. Every image (fgbg, mask, depth) in the dataset are of size $224\times224$. The distribution of fgbg, mask and depth values for XYZ dataset are shown in fig. (WHAT?). The dataset has $400K$ records. A $70-30$ train-test-split $280K$ and $120K$ train/test images respectively. 
-A sample record in the dataset contains paths to all the images as shown below.
-
-\textit{('./data/bgimages/bgimg099.jpg', 
-'./data/out2/images/fgbg392483.jpg', 
-'./data/out2/masks/mask392483.jpg', 
-'./data/out2/depth/fgbg392483.jpg')}
 
 \subsection{Model}
 By using both long and short skip connections we proposed a light weight model following U-Net architecture with two decoder 
