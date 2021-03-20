@@ -121,7 +121,7 @@ train models to predict depth, or to predict both depth and mask.
 \end{enumerate}
   
 
-Figure \ref{fig:sampledatarecord} represents a few representative examples of a dataset to help detect cattle on road,
+Figure \ref{fig:sampledatarecord} represents an example from the generated dataset to help detect cattle on road,
  which is very common on Indian roads, leading to several accidents involving loss of life and property. 
  The generated datasets and the trained models are publicly available.
 
@@ -214,10 +214,10 @@ and DNN to separate foreground from background) can help generate the required P
 \begin{figure*}
   \begin{center}
   \begin{tabular}{@{}c@{}}
-    \includegraphics[width=0.8\linewidth]{bgimages.jpg}
+    \includegraphics[width=1.0\linewidth]{bgimages.jpg}
   \end{tabular}
   \begin{tabular}{@{}c@{}}
-      \includegraphics[width=0.8\linewidth]{fgimages.jpg}
+      \includegraphics[width=1.0\linewidth]{fgimages.jpg}
   \end{tabular}
   \end{center}
   \caption{Scene and foreground object images}
@@ -262,7 +262,7 @@ For $k=20$ and $n=m=100$ this becomes $400,000$ fg-bg images. Algorithm \ref{alg
         add $fg-bg$ image to a batch\;
     }
     \If{$b$ new fg-bg images generated}{
-      run depth model on batch and save corresponding depth images
+      run depth model on batch and save corresponding depth images. Rescale saved images to $224\times224$
     }
     }}
 \caption{Generate Dataset(\textit{[bgimages]}, \textit{[fgimages]}, $k$, $b$)}
@@ -301,56 +301,26 @@ For $k=20$ and $n=m=100$ this becomes $400,000$ fg-bg images. Algorithm \ref{alg
 % MOVE THIS TO TOP
 \begin{figure*}
   \begin{center}
-  \begin{tabular}{@{}c@{}}
-      \includegraphics[width=0.8\linewidth]{overlay.jpg}
-  \end{tabular}
-  \begin{tabular}{@{}c@{}}
-      \includegraphics[width=0.8\linewidth]{overlaymask.jpg}
-  \end{tabular}
-  \begin{tabular}{@{}c@{}}
-      \includegraphics[width=0.8\linewidth]{overlaydepth.jpg}
-  \end{tabular}
+    \includegraphics[width=1.0\linewidth]{good.png}
   \end{center}
   \caption{Three images resulted from the algorithm used. (top) A scene image on which a foreground object is positioned
    at random location with random scale, (middle) respective mask for the scene image, and (bottom) calculated depth by using a model.}
   \label{fig:finaldataset}
 \end{figure*}
 
-%\subsubsection{Directory Structure}
-\subsection{Using Segmentation for Adaptive Scaling and Occlusion}
-% put the adaptive scaling work.
-First show images with wrong scale and how adaptive scaling produces better results. Discuss algo for adaptive Scaling
-Then discuss occlusion detection
-MENTION that for each application this has to be expreimentally done and this is not an automated process.
-However in out baseline model we used randomly scaled data only.
+\section{Experiments}
+In this section, we provide a baseline for monocular depth estimation and foreground segmentation on the \textit{SmallDepthMask} dataset.
+Convolutional Neural Networks(CNN) are progressive in exploring structural features and spatial image formation. 
+To come up with baseline, we started  training simple CNN, Resnet, and Unet++. 
+The state-of-the-art models for image segmentation are variants of U-Net and fully convolutional networks (FCN)\cite{drozdzal2016importance}. 
+long skip connections are used to skip features from the contracting path to the expanding path in order to recover 
+spatial information lost during downsampling \cite{zhou2019unet++}. Short skip connections can be used to build deep FCNs. 
 
-\section{Example Applications}
-\subsection{Detecting cattle on roads}
-Describe importance and if possible related work and how deep learning is not yet applied.
-Give example images
+\subsection{Detecting Cattle on Road}
 
+DISCUSS WHY? NEED FOR THIS APPLICaTION HERE...
 
-% From Abhinav
-We can include adaptive placement of foreground to bemore realistic and also occlusion handling. However norte that this is only preliminary
-The segmentation I used gave us road, skiy, tree etc. If I remember correctly, I used the bottommost row in image that have a threshold number of
-sky pixels. And based on the max depth and span of the non sky part determined a formula to scale. The cattle was placed on ground area only
-Finally, any objects that come on top of cow region in segmentation are put on top in the generated image.
-
-I can formally write the algo tomorrow.
-% end
-
-
-\subsection{Example 2} % if another partner comes
-
-\subsection{Example 3} % for one more partner
-
-
-
-
-\subsection{Data Statistics}
-Every image (fgbg, mask, depth) in the dataset are of size 224 X 224. 
-The distribution of fgbg, mask and depth values for XYZ dataset are shown in fig. 
-The dataset has 400000 records. A train-test-split of (70-30) gives a training set size of 280000 and 120000. 
+Previous sections desribe as an example the dataset generation for this application. The dataset is available for public use. Every image (fgbg, mask, depth) in the dataset are of size $224\times224$. The distribution of fgbg, mask and depth values for XYZ dataset are shown in fig. (WHAT?). The dataset has $400K$ records. A $70-30$ train-test-split $280K$ and $120K$ train/test images respectively. 
 A sample record in the dataset contains paths to all the images as shown below.
 
 \textit{('./data/bgimages/bgimg099.jpg', 
@@ -358,14 +328,12 @@ A sample record in the dataset contains paths to all the images as shown below.
 './data/out2/masks/mask392483.jpg', 
 './data/out2/depth/fgbg392483.jpg')}
 
-\section{Experiments}
-In this section, we provide a baseline for monocular depth estimation and segmentation on the \textit{SmallDepthMask} dataset. Convolutional Neural Networks(CNN) are progressive in exploring structural features and spatial image formation. To come up with baseline, we started  training simple CNN, Resnet, and Unet++. 
-The state-of-the-art models for image segmentation are variants of U-Net and fully convolutional networks (FCN)\cite{drozdzal2016importance}. 
-long skip connections are used to skip features from the contracting path to the expanding path in order to recover 
-spatial information lost during downsampling \cite{zhou2019unet++}. Short skip connections can be used to build deep FCNs. 
-
 \subsection{Model}
-By using both long and short skip connections we proposed a light weight model following U-Net architecture with two decoder networks meant for segmentation mask prediction and depth prediction. The architecture of the model is shown in Fig \ref{fig:modelarch}. The total number of parameters of this model are 5,525,568 including both the decoders. The encoder part of network is comprised of four DownSampling units. Every downsampling unit compresses the input scene image with the help of a series of convolutional operations. In our implementation, the source image of size $128 X 128$, changed into $64X64 \rightarrow 32X32 \rightarrow  16X16 \rightarrow 8X8$. This model has DepthDecoder and MaskDecoder and each of them is comprised of four upsampling units. The compressed source image is expanded with the help of Artous convolution and Transposed convolution operations. The encoder outcome $8 X 8$ is expanded into $16X16 \rightarrow 32X32 \rightarrow 64X64 \rightarrow 128X128$. As shown in model architecture Fig.\ref{fig:modelarch} the outcome of encoder downsampling units were added to outcomes of decoder upsampling units.
+By using both long and short skip connections we proposed a light weight model following U-Net architecture with two decoder 
+networks meant for segmentation mask prediction and depth prediction. The architecture of the model is shown in Fig \ref{fig:modelarch}. 
+The total number of parameters of this model are $5,525,568$ including both the decoders. 
+
+The encoder part of network is comprised of four DownSampling units. Every downsampling unit compresses the input scene image with the help of a series of convolutional operations. In our implementation, the source image of size $128 X 128$, changed into $64X64 \rightarrow 32X32 \rightarrow  16X16 \rightarrow 8X8$. This model has DepthDecoder and MaskDecoder and each of them is comprised of four upsampling units. The compressed source image is expanded with the help of Atrous and Transposed convolution operations. The encoder outcome $8 X 8$ is expanded into $16X16 \rightarrow 32X32 \rightarrow 64X64 \rightarrow 128X128$. As shown in model architecture Fig.\ref{fig:modelarch} the outcome of encoder downsampling units were added to outcomes of decoder upsampling units.
 
 We have trained this model on the entire \textit{SmallDepthMask} dataset from scratch with train-test-split of $70-30\%$. 
 During training the network is trained with the batch size of 64 for 10 epochs using SGD optimizer\cite{bottou2010large}. Every epoch took one hour of time on GPU because of the huge training data.
@@ -375,14 +343,15 @@ The Deep Convolutional Neural Networks encoder is fed with a image $(128 X 128)$
 image and and second decoder outputs a depth image. To reduce overfitting\cite{perez2017effectiveness}, and achieve generalization
 this work employed the augmentation techniques, Random Rotation, Random Grayscale, Color Jitter, random horizontal flips and random channel swaps. 
 
-\begin{figure*}
+\begin{figure}
 \centering
-  \includegraphics[width=0.8\textwidth]{networkarchitecture.jpg}
+  \includegraphics[width=1.0\linewidth]{networkarchitecture.jpg}
   \caption{Network Architecture}
   \label{fig:modelarch}
-\end{figure*}
+\end{figure}
 
-Deciding a universal loss function is not possible for complex objectives like Image segmentation and depth prediction. Based on the survey done by Shruti Jadon\cite{jadon2020survey} we have picked L1 loss and SSIM(Structural Similarity Index) loss\cite{zhao2015loss}. Their work also suggested us to use penalty term which helps the network to focus towards hard-to-segment boundary regions. The Loss is calculated with the help of L1 and SSIM at both the decoders and employed regularization for weight penality.
+\subsection{Loss function}
+Deciding a universal loss function is not possible for complex objectives like Image segmentation and depth prediction. Based on the survey done by Shruti Jadon~\cite{jadon2020survey} we have picked L1 loss and SSIM(Structural Similarity Index) loss~\cite{zhao2015loss}. Their work also suggested to use penalty term which helps the network to focus towards hard-to-segment boundary regions. The Loss is calculated with the help of L1 and SSIM at both the decoders and employed regularization for weight penality.
 
 For training our network with two decoders, we defined the same loss function $L$ for depth and mask prediction, between $y$ and $\hat{y}$ as the weighted sum of two loss function values.
 
@@ -411,8 +380,11 @@ Different weight parameters $\lambda$ were tried and we have ended with a value 
 L(y, \hat{y}) = 0.84 \ast L_{term1}(y, \hat{y}) + 0.16 \ast L_{term2}(y, \hat{y})
 \end{equation}
 
+\subsection{Optimizer and Learning Rate}
+MENTION DETAILS HERE
+
 \subsection{Results}
-The model is trained on the entire dataset and obtained significant accuracy and minimal loss. The outcome of the model on validation dataset is shown in Fig \ref{fig:validinfer}. and on the unseen data is shown in Fig \ref{fig:unseeninfer}. The unseen data fed to the model is a orginal cattle image, not belongs to \textit{SamllDepthMask} which is generated by overlaying one on top of another. From the obtained segmentation masks and depths, It is very clear that the model is generalized well.
+The model is trained on the entire dataset and obtained significant accuracy and minimal loss. The outcome of the model on validation dataset is shown in Fig \ref{fig:validinfer}. and on the unseen data is shown in Fig \ref{fig:unseeninfer}. The unseen data fed to the model is a real picture and not one curated as in \textit{SamllDepthMask} where forgerround is placed on background. From the obtained segmentation masks and depths, It is very clear that the model generalized well. Few exceptions like the spots on cow and two calves not having very good detection indicate the non-presence of such examples in the training set. However, it should be straighforward to introduse few more examples to make the application more robust.
 
 \begin{figure*}
   \begin{center}
@@ -431,13 +403,32 @@ The model is trained on the entire dataset and obtained significant accuracy and
   \label{fig:unseeninfer}
 \end{figure*}
 
-
-
-\section{Conclusion}
+\section{Conclusion and Future Work}
+WRITE MORE HERE HOW WE FULFILLED THE CLAIMS
 Robust dataset for Image Segmentation and depth generation is proposed whose implementation cost is low.
 A lightweight baseline model to infer both mask and depth is proposed.
+
+\begin{figure*}
+  \begin{center}
+  \includegraphics[width=1.0\textwidth]{refinement.png}
+  \caption{Using Semantic Segmentation for adaptive placement and scaling. (Top) semantic segmentation. (Middle) Example of poor scaling and placement in proposed approach. (Bottom) Attempted correct placement and scaling}
+  
+  \end{center}
+  \label{fig:refinement}
+\end{figure*}
+
+\begin{figure}
+  \begin{center}
+  \includegraphics[width=1.0\linewidth]{occlusion.jpg}
+  \caption{Restoring occlusion from semantic segmentation}
+  \end{center}
+  \label{fig:occlusion}
+\end{figure}
+
+Due to random scaling and placement the fg-bg images are often not so realistic. Figure \ref{fig:refinement} middle show sample images with wrong placement and scale. Regardless of this, the trained model is generalizing well. However, we experimented with detection of ground and sky regions from semantic segmentation. [ONE LINE WITH REFERECE TO THE WORK WE USED FOR THIS] That combined with the depth information of the background gives necessary cues as to where to place the foreground image and at what scale. Figure \ref{fig:refinement} shows the outcomes. We further experimented with adding occlusions from semantic segmentation information where non ground/sky pixels that belong to regions starting below the top margin of the foreground location, are placed on top of the foreground. Figure \ref{fig:occlusion} illustrates this. The effect of such data on training is yet to be explored. At the same time, the generated images by such informed scaling and placement are also not free from artifacts. The orientation and unknown size of foregroung object pose a challenge, leading to use of several experimental constants in the transformation process. We would like to formalize that and analyze its outcome on training as future work.
+
 \section{Acknowledgement}
-This paper and the research behind it would not have been possible without the exceptional support and computing facilities of my Institution, Vishnu Institute of Technology. Mention TSAI
+Authors are grateful to Vishnu Institute of Technology for providing necessary infrastructure, and to Rohan Sravan of The School of AI for initiating the idea and providing necessary support to carry out the research.
 
 {\small
 \bibliographystyle{ieee_fullname}
