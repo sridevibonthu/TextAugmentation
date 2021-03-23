@@ -272,8 +272,9 @@ We presented a novel approach to generate a robust large dataset for depth and f
 
 Due to random scaling and placement the fg-bg images are often not so realistic. Figure \ref{fig:refinement} middle show sample images with wrong placement and scale. Regardless of this, the trained model is generalizing well. However, we experimented with detection of ground and sky regions from semantic segmentation by following DeepLab architecture\cite{deeplabv3plus2018}. That combined with the depth information of the background gives necessary cues as where to place the foreground image and at what scale. Figure \ref{fig:refinement} shows the outcomes. We further experimented with adding occlusions from semantic segmentation information where non ground/sky pixels that belong to regions starting below the top margin of the foreground location, are placed above the foreground. Figure \ref{fig:occlusion} illustrates this. The effect of such data on training is yet to be explored. At the same time, the generated images by such informed scaling and placement are also not free from artifacts. The orientation and unknown size of foreground object pose a challenge, leading to use of several experimental constants in the transformation process. We would like to formalize that and analyze its outcome on training as future work.
 
-\section{Acknowledgement}
-Authors are grateful to Vishnu Institute of Technology for providing necessary infrastructure, and to Rohan Shravan of The School of AI for initiating the idea and providing necessary support to carry out the research.
+\section{Acknowledgements}
+%Authors are grateful to Vishnu Institute of Technology for providing necessary infrastructure, and to Rohan Shravan of The School of AI for initiating the idea and providing necessary support to carry out the research.
+\textit{Removed to maintain anonymity.}
 
 {\small
 \bibliographystyle{unsrt}
